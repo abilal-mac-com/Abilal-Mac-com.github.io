@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Origins — The Bilal Papers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF9F4;
+    --panel:#FFFDF9;
+    --ink:#1d1b19;
+    --ink-soft:#5a544c;
+    --house:#8B0000;
+    --hair:#DAD2C4;
+    --measure:40rem;
+    --display:'Helvetica Neue',Helvetica,Arial,'Segoe UI',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Amiri',Georgia,'Times New Roman',serif;
+    font-size:clamp(1.08rem,1.0rem + 0.5vw,1.26rem);
+    line-height:1.78;
+    text-rendering:optimizeLegibility;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---- Sticky navigation ---- */
+  .topbar{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--hair)}
+  .brand{font-family:var(--display);text-transform:uppercase;letter-spacing:.24em;font-weight:700;font-size:.62rem;color:var(--house);text-align:center;padding:.7rem 1rem .45rem}
+  .tabbar{display:flex;gap:.15rem;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:0 .5rem;scrollbar-width:none}
+  .tabbar::-webkit-scrollbar{display:none}
+  .tab{flex:0 0 auto;font-family:var(--display);text-transform:uppercase;letter-spacing:.09em;font-size:.66rem;font-weight:700;color:var(--ink-soft);text-decoration:none;padding:.6rem .7rem;border-bottom:2px solid transparent;white-space:nowrap;cursor:pointer}
+  .tab:hover{color:var(--ink)}
+  .tab.is-current{color:var(--house);border-bottom-color:var(--house)}
+
+  /* ---- Panels ---- */
+  .tab-panel{display:none}
+  .tab-panel.is-active{display:block}
+  /* No-JS fallback (e.g. a local preview that will not run scripts) */
+  .no-js #cover{display:block}
+  .no-js .tab-panel:target{display:block}
+  .no-js:has(.tab-panel:target:not(#cover)) #cover{display:none}
+
+  .panel-inner{max-width:var(--measure);margin:0 auto;padding:1.5rem 1.25rem 4rem}
+
+  /* ---- Cover / title page ---- */
+  .cover-inner{max-width:38rem;margin:0 auto;padding:3rem 1.5rem 3.4rem;text-align:center;min-height:66vh;display:flex;flex-direction:column;justify-content:center}
+  .cover .kicker{font-family:var(--display);text-transform:uppercase;letter-spacing:.3em;font-size:.66rem;font-weight:700;color:var(--house)}
+  .cover h1{font-family:var(--display);font-weight:700;font-size:clamp(3rem,2rem + 6vw,5.4rem);letter-spacing:.04em;line-height:1;margin:1.5rem 0 1.1rem}
+  .cover .subtitle{font-style:italic;font-size:1.1em;line-height:1.5;color:var(--ink-soft);max-width:30rem;margin:0 auto}
+  .cover .orn{color:var(--house);font-size:1.35rem;margin:1.4rem 0}
+  .cover .author{font-family:var(--display);text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;font-weight:700;color:var(--ink)}
+  .cover .imprint{font-family:var(--display);text-transform:uppercase;letter-spacing:.22em;font-size:.64rem;color:var(--ink-soft);margin-top:2.6rem}
+
+  /* ---- Title block within an essay ---- */
+  h1.title{font-family:var(--display);font-weight:700;letter-spacing:-.012em;line-height:1.1;font-size:clamp(1.85rem,1.35rem + 2.3vw,2.8rem);margin:.2rem 0 .75rem}
+  .standfirst{font-style:italic;font-size:1.06em;line-height:1.5;color:var(--ink-soft);margin:0 0 1rem}
+  .byline{font-family:var(--display);text-transform:uppercase;letter-spacing:.14em;font-weight:700;font-size:.7rem;color:var(--house)}
+  .titlerule{height:2px;background:var(--house);opacity:.85;margin:1.5rem 0 1.9rem}
+
+  /* ---- Body ---- */
+  p{margin:0 0 1.15em;text-align:justify;-webkit-hyphens:auto;hyphens:auto}
+  .opening{margin-top:0}
+  .dropcap{float:left;font-family:var(--display);font-weight:700;color:var(--house);font-size:3.5em;line-height:.78;margin:.02em .1em 0 0}
+
+  h2{font-family:var(--display);font-weight:700;font-size:1.32em;line-height:1.22;letter-spacing:-.005em;margin:2.7rem 0 .9rem;clear:both}
+  h2::after{content:"";display:block;width:2.4rem;height:2px;background:var(--house);margin-top:.55rem}
+
+  .pullquote{font-style:italic;color:var(--house);font-size:1.28em;line-height:1.42;text-align:center;margin:2.3rem auto;padding:1.15rem .5rem;border-top:1px solid var(--house);border-bottom:1px solid var(--house);max-width:34rem}
+
+  .scripture{background:var(--panel);border:1px solid var(--hair);border-left:3px solid var(--house);border-radius:2px;padding:1.6rem 1.45rem;margin:2.3rem 0}
+  .scripture .basmala{direction:rtl;font-family:'Amiri',serif;text-align:center;font-size:1.5em;line-height:2;margin:0 0 .35rem}
+  .scripture .ayat{direction:rtl;font-family:'Amiri',serif;text-align:center;font-size:1.75em;line-height:2.15;margin:0}
+  .scripture .translation{font-style:italic;color:var(--ink-soft);font-size:.99em;line-height:1.56;margin:1.15rem 0 0;text-align:left;hyphens:none}
+  .scripture .ref{font-family:var(--display);text-transform:uppercase;letter-spacing:.12em;font-weight:700;font-size:.64rem;color:var(--house);margin-top:.75rem}
+  .salla{font-family:'Amiri',serif;font-size:1.15em;line-height:1}
+
+  /* ---- Cross-references ---- */
+  a.xref{color:var(--house);text-decoration:none;border-bottom:1px solid rgba(139,0,0,.35)}
+  a.xref:hover{border-bottom-color:var(--house)}
+
+  /* ---- Takeaways ---- */
+  .takeaways{margin-top:3.3rem}
+  .takeaways ol{list-style:none;counter-reset:tk;padding:0;margin:0}
+  .takeaways li{counter-increment:tk;position:relative;padding-left:2.5rem;margin:0 0 .9em;text-align:justify;hyphens:auto}
+  .takeaways li::before{content:counter(tk);position:absolute;left:0;top:.05em;font-family:var(--display);font-weight:700;color:var(--house);font-size:.92em}
+
+  /* ---- Sources ---- */
+  .sources{margin-top:2.9rem;padding-top:1.35rem;border-top:1px solid var(--hair);font-size:.83em;line-height:1.5;color:var(--ink-soft)}
+  .sources p{margin:0 0 .55em;padding-left:1.3rem;text-indent:-1.3rem;text-align:left;hyphens:none}
+
+  /* ---- Stub note (for essays not yet poured in) ---- */
+  .stub{font-style:italic;color:var(--ink-soft);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:1.2rem 0;margin:1.8rem 0;text-align:center}
+
+  /* ---- Colophon ---- */
+  .colophon{margin:3.2rem 0 2.4rem;text-align:center;font-family:var(--display);text-transform:uppercase;letter-spacing:.18em;font-size:.62rem;color:var(--ink-soft);line-height:1.9}
+  .colophon .orn{display:block;color:var(--house);font-size:1rem;letter-spacing:0;margin-bottom:.55rem}
+
+  @media (max-width:560px){
+    p,.takeaways li{text-align:left}
+    .panel-inner{padding:1.3rem 1.05rem 3.5rem}
+    .scripture{padding:1.25rem 1rem}
+    .scripture .ayat{font-size:1.5em}
+    .scripture .basmala{font-size:1.35em}
+    .dropcap{font-size:3.1em}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">The Bilal Papers &middot; Origins</div>
+  <nav class="tabbar" aria-label="Sections">
+    <a class="tab" href="#cover" data-panel="cover">Cover</a>
+    <a class="tab" href="#intro" data-panel="intro">Introduction</a>
+    <a class="tab" href="#e1" data-panel="e1">I &middot; Ten Thousand Years Ago</a>
+    <a class="tab" href="#e2" data-panel="e2">II &middot; Five Thousand Years Ago</a>
+    <a class="tab" href="#e3" data-panel="e3">III &middot; Two Thousand Years Ago</a>
+    <a class="tab" href="#e4" data-panel="e4">IV &middot; Fifteen Hundred Years Ago</a>
+    <a class="tab" href="#e5" data-panel="e5">V &middot; Banū Ādam</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ================= COVER ================= -->
+  <section class="tab-panel cover" id="cover">
+    <div class="cover-inner">
+      <div class="kicker">The Bilal Papers</div>
+      <h1>ORIGINS</h1>
+      <p class="subtitle">A Survey of the World and Its Peoples, at Five Removes in Time — from the First Farmers to the Oldest Question of All</p>
+      <div class="orn">&#10038;</div>
+      <div class="author">Claude Opus</div>
+      <div class="imprint">The Bilal Papers &middot; 2026</div>
+    </div>
+  </section>
+
+  <!-- ================= INTRODUCTION ================= -->
+  <section class="tab-panel" id="intro">
+    <div class="panel-inner">
+      <h1 class="title">Introduction</h1>
+      <p class="standfirst">Five surveys of the whole earth, taken at widening removes in time — and, in many ways, a guide for the modern, educated Muslim: to reconcile what science has placed beyond dispute with what faith holds beyond doubt, and, in the reconciling, to marvel at the artistry of the Creator.</p>
+      <div class="titlerule"></div>
+
+      <p class="opening"><span class="dropcap">W</span>e are forever told what the ancient world was like — the pharaohs and the Caesars, the cradles of civilisation strung along their great rivers. Yet &lsquo;the ancient world&rsquo; names only a thin and surprisingly recent sliver of the human story. The first of these surveys sets out from around 8000 BCE, a date at which the Sumerians and the pharaohs lay as far in the future as they now lie in the past, and from which the whole of recorded history is a late afterthought. The series was built to take the longer view, and to take it honestly.</p>
+
+      <p>Its method is the same in every instalment, and worth stating plainly, for it is unfashionable. Three things are kept apart throughout: what is securely known, what may reasonably be inferred, and what cannot be known at all. The temptation, in writing of the deep past, is to let the second and third borrow the authority of the first — to dress a guess as a finding, or to read a cherished story into ground that will not bear it. These essays try not to. Where the honest answer is that we do not, and may never, know, they say so.</p>
+
+      <p>The journey runs forward. <a class="xref" href="#e1" data-panel="e1">Ten thousand years ago</a>: a planet of foragers and the first farmers, its grandest works a ring of carved pillars in Anatolia and a stone tower in the Jordan valley. <a class="xref" href="#e2" data-panel="e2">Five thousand years ago</a>: the first cities and the first writing, in two river valleys only. <a class="xref" href="#e3" data-panel="e3">Two thousand years ago</a>: the high noon of Rome and Han China, holding between them perhaps half of all the living. <a class="xref" href="#e4" data-panel="e4">Fifteen hundred years ago</a>: the long twilight of antiquity, the eve of Islam, the birth of the Prophet Muḥammad <span class="salla" lang="ar">&#65018;</span> in a desert town the great powers had not troubled to conquer.</p>
+
+      <p><a class="xref" href="#e5" data-panel="e5">The fifth essay</a> breaks the pattern by design. Having reached the threshold of the final revelation, it turns to ask what that revelation implies about where the story began — reaching back behind even the first survey, to the emergence of our species, and to the question this volume exists to address: how the believer is to hold, in one hand, the plain sense of scripture and the settled findings of reason. The classical scholars — al-Ghazālī and Ibn Rushd foremost — held that truth cannot contradict truth; the educated Muslim has met such questions since long before Darwin, and need not fear them now.</p>
+
+      <p>For one conclusion gathers all five. Across every survey the same finding recurs: that humanity is a single species, its variation grading continuously across the earth, with no sharp lines and no privileged centre — a family, in the old image, taken from the whole earth (al-Rūm 30:22). It is where the deepest science and the plainest sense of revelation are found to agree. To follow the human story to that meeting-point is, for the believer, not merely to learn but to reflect, and to ponder — among the signs of the Creator — the unutterable artistry of what He has made.</p>
+    </div>
+  </section>
+
+  <!-- ================= ESSAY I (stub) ================= -->
+  <section class="tab-panel" id="e1">
+    <div class="panel-inner">
+      <h1 class="title">The World Ten Thousand Years Ago</h1>
+      <p class="standfirst">A survey of the Earth and its peoples, circa 8000 BCE.</p>
+      <div class="byline">By Claude Opus</div>
+      <div class="titlerule"></div>
+      <p class="stub">Full text to be poured into this edition.</p>
+    </div>
+  </section>
+
+  <!-- ================= ESSAY II (stub) ================= -->
+  <section class="tab-panel" id="e2">
+    <div class="panel-inner">
+      <h1 class="title">The World Five Thousand Years Ago</h1>
+      <p class="standfirst">A survey of the Earth and its peoples around 3000 BCE — when the first cities rose, writing began, and the long silence of prehistory started, at last, to break.</p>
+      <div class="byline">By Claude Opus</div>
+      <div class="titlerule"></div>
+      <p class="stub">Full text to be poured into this edition.</p>
+    </div>
+  </section>
+
+  <!-- ================= ESSAY III (stub) ================= -->
+  <section class="tab-panel" id="e3">
+    <div class="panel-inner">
+      <h1 class="title">The World Two Thousand Years Ago</h1>
+      <p class="standfirst">A survey of the Earth and its peoples around the year 1 CE — the high noon of the ancient empires, when Rome and Han China between them held perhaps half of humanity, and history, across much of the Old World, had begun at last to speak in its own voice.</p>
+      <div class="byline">By Claude Opus</div>
+      <div class="titlerule"></div>
+      <p class="stub">Full text to be poured into this edition.</p>
+    </div>
+  </section>
+
+  <!-- ================= ESSAY IV (full) ================= -->
+  <section class="tab-panel" id="e4">
+    <div class="panel-inner">
+      <h1 class="title">The World Fifteen Hundred Years Ago</h1>
+      <p class="standfirst">A survey of the Earth and its peoples around the year 570 of the Common Era — the eve of Islam, when a dimmed sun and a new pestilence fell upon a world divided between two exhausted empires, and, in an Arabian town that neither had troubled to conquer, the Prophet Muḥammad <span class="salla" lang="ar">&#65018;</span> was about to be born.</p>
+      <div class="byline">By Claude Opus</div>
+      <div class="titlerule"></div>
+
+      <p class="opening"><span class="dropcap">F</span>ifteen hundred years before the present sets us down in the long twilight of the ancient world. The arithmetic, as ever in this series, requires a word. Fifteen hundred calendar years before now falls around the year 526 of the Common Era; but this essay takes as its true datum a moment roughly half a century later — around 570 CE — for a particular reason. That year is the one in which Islamic tradition places the birth of the Prophet Muḥammad <span class="salla" lang="ar">&#65018;</span>, an event that would, within the lifetime of children then unborn, remake the entire map this series has been surveying. We therefore stand upon a threshold, and survey the world of the long sixth century — broadly 500 to 600 CE — as it was on the eve of the single most consequential human life of the age, and arguably of any age since.</p>
+
+      <p>This series has now made the journey three times. <a class="xref" href="#e1" data-panel="e1">Ten thousand years ago</a> we found a planet of hunter-gatherers and the very first farmers, on which the grandest works of human hands were a ring of carved pillars in the Anatolian uplands and a stone tower in the Jordan valley. <a class="xref" href="#e2" data-panel="e2">Five thousand years ago</a> we found the first cities and the first writing — but in two river valleys only, in Sumer and in Egypt, with the rest of the world still mute. <a class="xref" href="#e3" data-panel="e3">Two thousand years ago</a> we found the high noon of the ancient empires: Rome and Han China between them holding perhaps half of humanity, the Old World knit together by the Silk Road and the monsoon trade, history at last speaking across its whole literate breadth. The world we come to now is the first in this series to be described not on the rising arc but on the falling one. It is a world in which one of the two giants of the previous survey — the Roman Empire in the West — has already collapsed in its own homeland, and in which the other great structures of antiquity are visibly under strain.</p>
+
+      <p>That is the great novelty of this instalment, and it deserves to be stated plainly at the outset. Every previous survey has shown a world of more — more people, more cities, more connection, more of everything we are accustomed to call progress. This one shows, for the first time, a world of less, or at any rate of interruption: a population that had ceased to grow and may for a while have shrunk; cities that were contracting; a climate that had turned cold; and a pestilence, the first of its kind in the historical record, moving through the ports and provinces of the Mediterranean. The sixth century is the hinge on which the ancient world turns into the medieval, and it is among the most turbulent and creative periods in the whole human story. Out of its disorder came, among much else, the last and youngest of the great world religions.</p>
+
+      <p class="pullquote">The sixth century is the hinge on which the ancient world turns into the medieval.</p>
+
+      <h2>A Word on Method</h2>
+      <p>As in the earlier essays, three things must be kept apart: what is securely known, what may reasonably be inferred, and what cannot be known at all. The advantage of the sixth century over the deep past is enormous. This is a fully historical world across most of the literate Old World — a world that names itself, dates its own events, writes its own laws and chronicles and poems, and argues, often at ferocious length, about its own beliefs. We can follow the reign of an emperor year by year, read the dispatches of his generals, and inspect the coins struck in his name. But the gift is uneven, and in one celebrated case — the Britain of this very period — the written record very nearly goes dark, so that we are thrown back upon archaeology and legend much as we were ten thousand years before. The frontier between knowledge and ignorance has not vanished; it has merely moved, and in places it doubles back upon itself.</p>
+
+      <h2>The Physical Stage: A Dimming Sun</h2>
+      <p>The physical world of 570 CE was, in its broad outline, the world we inhabit: the great ice sheets long melted, the sea at essentially its present level, Britain an island these six thousand years, and the Sahara the desert it remains. In our previous survey we dwelt upon the climate, because the centuries around the year 1 had enjoyed a warm, stable, and benign spell — the Roman Climatic Optimum — that had helped, though it did not cause, the flourishing of Rome and Han China alike. The sixth century offers the mirror image, and the contrast is one of the most striking facts in this whole survey.</p>
+      <p>In the year 536 CE something extraordinary happened to the sky. A veil of dust spread across the Northern Hemisphere and dimmed the sun for some eighteen months. The Byzantine historian Procopius, an eyewitness, recorded that &lsquo;the sun gave forth its light without brightness, like the moon, during this whole year&rsquo;, and that it seemed as though the sun were in perpetual eclipse. We now know the cause. Ice cores and the rings of ancient trees record a cluster of colossal volcanic eruptions — in 536, again in 540, and a third around 547 — whose ash and sulphur dimmed the sun and chilled the earth. The work of the dendrochronologist Ulf Büntgen and his colleagues, who in 2016 christened the episode the Late Antique Little Ice Age, identifies the resulting cold spell as among the most severe of the past two thousand years, lasting from 536 to roughly 660 CE. One historian has called 536 the beginning of the worst period to be alive in recorded history.</p>
+      <p>The consequences were not abstract. Across Europe, the Mediterranean, the Near East, and China, the chronicles speak of failed harvests, summer frosts, snow in high summer, and famine. A cold and hungry world is a weakened world; and into that weakness, almost at once, came the pestilence.</p>
+
+      <h2>A New Pestilence</h2>
+      <p>In 541 CE plague arrived in the Egyptian port of Pelusium, and the following year it reached Constantinople. It was, so far as the record allows us to say, the first pandemic of bubonic plague in human history — caused by the bacterium <em>Yersinia pestis</em>, the same organism that would return eight centuries later as the Black Death, and confirmed as such in our own day by the recovery of its DNA from sixth-century graves. Contemporaries described the swellings, the fever, and the heaped and hasty burials with a horror that leaps off the page. The outbreak is named, after the reigning emperor, the Plague of Justinian, and it recurred in waves for two hundred years.</p>
+      <p>How many it killed is one of the liveliest controversies in the field, and it is worth pausing upon, because it bears directly on the character of the age. The older, &lsquo;maximalist&rsquo; view — associated with the historian Kyle Harper — holds that the plague carried off between a quarter and a half of the population of the Eastern Roman Empire, perhaps tens of millions across Eurasia, and that it helped to end antiquity itself. A &lsquo;minimalist&rsquo; school, led by Lee Mordechai and Merle Eisenberg, has argued in a series of studies since 2019 that the evidence for catastrophe is thin: the papyri, coins, and inscriptions show striking continuity, the plague pits are few, and at two great cemeteries in Bavaria, of nearly two thousand graves, only eleven have yielded the plague bacterium. The honest position, and the one this series adopts, is that the plague was real, recorded, and genetically confirmed, but that its scale is genuinely uncertain — a salutary reminder that even in a literate, well-documented age, the most basic human facts can elude us.</p>
+
+      <h2>How Many People, and Where?</h2>
+      <p>World population around the year 600 CE is usually reckoned at something close to two hundred million — much the same figure we gave for the turn of the era, six centuries before. This near-stagnation is itself the headline. In every previous survey the population had risen many-fold between one instalment and the next; here, for the first time, the line is flat, and may for a generation or two have dipped. The standard synthesis of Colin McEvedy and Richard Jones places the world of 600 CE at around two hundred million; other estimates run somewhat higher or lower. The combined drag of the cold decades and the recurring plague is the obvious suspect for the stall, though, as we have seen, the magnitude of the plague is disputed, and the figures are in any case coarse.</p>
+      <p>The distribution, as always, can be sketched only in the roughest terms. The two demographic heavyweights of the Old World were, as at the turn of the era, China and the Indian subcontinent, each home to some tens of millions; the lands of the two great western empires — the Eastern Roman and the Sasanian Persian — held perhaps thirty to fifty million between them; Europe beyond the Mediterranean, sub-Saharan Africa, and the Americas accounted for the rest, with the New World&rsquo;s population, concentrated in Mesoamerica and the Andes, a particular unknown. These are educated guesses dressed in numerals, and should be read as such. What can be said with confidence is that no single state now governed anything like the share of humanity that Han China had governed six centuries earlier; the age of the truly universal empire was, for the moment, in abeyance.</p>
+
+      <h2>The Two Superpowers: Byzantium and Sasanian Persia</h2>
+      <p>For two and a half centuries the politics of the Near East had been dominated by a single, grinding rivalry between two empires of comparable might, and the sixth century found the contest at its height. To the west lay the Eastern Roman Empire, which historians by convention call Byzantine, after the old Greek name of its capital, Byzantium — refounded by the emperor Constantine in 330 CE as Constantinople, &lsquo;the city of Constantine&rsquo;, and known today as Istanbul. This was the Roman Empire still: it called itself Roman, its law was Roman, its emperor sat in unbroken succession from Augustus. But its language was now increasingly Greek rather than Latin, its faith was Christianity, and its centre of gravity had shifted decisively to the eastern Mediterranean.</p>
+      <p>The towering figure of the age was the emperor Justinian I, who reigned from 527 to 565 CE and had died just before our datum. His ambition was nothing less than the restoration of the Roman Empire in the West, and for a time he seemed to achieve it: his general Belisarius destroyed the Vandal kingdom of North Africa, recovered Italy from the Ostrogoths after a ruinous twenty-year war, and seized a foothold in southern Spain. Justinian left two monuments that have outlasted every conquest. The first is the <em>Corpus Juris Civilis</em>, the great codification of Roman law completed in the 530s, which became the foundation of the legal traditions of much of the modern world. The second is the church of Hagia Sophia in Constantinople, raised in a mere five years and dedicated in 537, whose vast floating dome remained the largest enclosed space in Christendom for the better part of a thousand years.</p>
+      <p>Yet the restoration was a mirage, and it was already dissolving as our window opens. The wars had bankrupted the treasury and the plague had thinned the armies. In 568 CE, only three years after Justinian&rsquo;s death, a Germanic people called the Lombards poured into Italy and tore away most of what Belisarius had so painfully won, leaving Byzantium clinging to Ravenna, Rome, and the south. The empire that bestrode the eastern Mediterranean in 570 was magnificent, ancient, and dangerously overstretched.</p>
+      <p>Its great antagonist lay across the Euphrates: the Sasanian Empire of Persia, which ruled modern Iran and Iraq and reached deep into Central Asia, and which was heir to a Persian imperial tradition a thousand years old. Its capital was Ctesiphon on the river Tigris, near modern Baghdad, where the colossal brick vault of the royal audience hall — the Ṭāq Kasrā, still standing today — proclaimed the majesty of the King of Kings. Its faith was Zoroastrianism, the ancient dualist religion of the prophet Zarathustra, with its sacred fires and its cosmic struggle of light against darkness. And in 570 it too had a great king: Khosrow I, called Anūshirwān, &lsquo;of the immortal soul&rsquo;, who reigned from 531 to 579 and whom later Persian and Islamic tradition would remember as the very pattern of the just ruler. He reformed the taxes and the army and made his court a haven of learning: when Justinian closed the thousand-year-old philosophical Academy of Athens in 529 as a pagan relic, several of its scholars found refuge in Persia, and the academy of Gondēshāpūr became a meeting-place of Greek, Syriac, Persian, and Indian knowledge.</p>
+      <p>These two empires had fought each other to exhaustion over Mesopotamia, Armenia, and the Caucasus, and would soon fight the most terrible of all their wars, from 602 to 628, which left both so spent that neither could withstand what came out of the desert between them. That, however, is to run ahead. In 570 they were the two poles of the civilised world; and between them, unregarded, lay Arabia.</p>
+
+      <h2>The Arabs and Arabia</h2>
+      <p>The Arabian peninsula in the sixth century was, to the great empires, a margin: a vast expanse of desert and oasis, mostly beyond the reach of any state, peopled by tribes who lived by herding, raiding, trade, and an intricate code of honour, and who spoke a family of closely related dialects we call Arabic. Islamic tradition would later call this pre-Islamic age the Jāhiliyya, the &lsquo;age of ignorance&rsquo; — a religious judgement upon its idolatry rather than a description of its culture, for the Arabs of the Jāhiliyya possessed one of the supreme oral literatures of the ancient world. Their poetry, composed and recited in a highly refined common tongue and preserved in odes known as the muʿallaqāt, was the pride of the tribes and the arbiter of reputation; the Arabic language was a magnificent instrument long before it became the vehicle of scripture.</p>
+      <p>The margins of Arabia were, however, drawn firmly into the orbit of the great powers. Along the desert frontier of Byzantine Syria, the Christian Arab dynasty of the Ghassanids served as Rome&rsquo;s clients and shield against Persia; along the Persian frontier of Iraq, the rival Arab kingdom of the Lakhmids, based at al-Ḥīra, did the same for Ctesiphon. And in the fertile south, in modern Yemen, the ancient and wealthy kingdom of Ḥimyar passed through a religious upheaval that previews, in miniature, the larger drama to come. In the early sixth century its rulers had adopted Judaism, and a Jewish king, Yūsuf — remembered as Dhū Nuwās — massacred the Christians of the city of Najrān around 523 CE. In reprisal, the Christian kingdom of Aksum, in modern Ethiopia, invaded across the Red Sea and made Yemen a Christian, Aksumite domain. Within fifty years, around 570, the Sasanians in turn drove out the Aksumites and made Yemen a Persian province. Jewish, then Christian, then Zoroastrian: the south of Arabia changed its official faith three times in two generations. The religious ferment that would soon produce Islam was not a bolt from a clear sky.</p>
+      <p>It is the Aksumite occupation of Yemen that brings us to the threshold of our subject. The Aksumite viceroy, a Christian general named Abraha, governed Yemen and built at Ṣanʿāʾ a great cathedral. According to the Arab and Islamic tradition, Abraha resolved to extend his power northward and to destroy the shrine that was the religious and commercial heart of the Hijaz — the Kaʿba at Mecca — and he marched against it with an army that included at least one war-elephant, a beast never before seen in those parts. The expedition ended in disaster before Mecca, and the year of its failure became known to the Arabs as the Year of the Elephant — ʿĀm al-Fīl. It is the year in which the most widely held tradition places the birth of the Prophet Muḥammad <span class="salla" lang="ar">&#65018;</span>, and the destruction of the elephant army is the subject of one of the shortest and most vivid chapters of the Qurʾān, the hundred-and-fifth, Sūrat al-Fīl, &lsquo;The Elephant&rsquo;.</p>
+
+      <div class="scripture">
+        <p class="basmala" lang="ar">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+        <p class="ayat" lang="ar">أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِأَصْحَابِ الْفِيلِ ﴿١﴾ أَلَمْ يَجْعَلْ كَيْدَهُمْ فِي تَضْلِيلٍ ﴿٢﴾ وَأَرْسَلَ عَلَيْهِمْ طَيْرًا أَبَابِيلَ ﴿٣﴾ تَرْمِيهِم بِحِجَارَةٍ مِّن سِجِّيلٍ ﴿٤﴾ فَجَعَلَهُمْ كَعَصْفٍ مَّأْكُولٍ ﴿٥﴾</p>
+        <p class="translation">In the name of Allah, the Entirely Merciful, the Especially Merciful. Have you not considered, [O Muḥammad], how your Lord dealt with the companions of the elephant? Did He not make their plan into misguidance? And He sent against them birds in flocks, striking them with stones of hard clay, and He made them like eaten straw.</p>
+        <p class="ref">Sūrat al-Fīl &middot; Qurʾān 105:1&ndash;5 &middot; Saheeh International</p>
+      </div>
+
+      <p>In the understanding of the tradition, the proud army that came to destroy the House of God was annihilated by a power against which elephants and armies are as nothing — and the sanctuary was preserved for the Prophet who was to be born that very year.</p>
+      <p>A note of scholarly caution is in order, of the kind this series tries always to supply. The traditional date of 570 CE for both the Year of the Elephant and the Prophet&rsquo;s birth is the one most widely transmitted in the Islamic sources, but some modern historians, weighing the South Arabian inscriptions, place Abraha&rsquo;s campaigns somewhat earlier in the century. The precise year is uncertain; the significance is not.</p>
+      <p>Mecca itself was a sanctuary town in the arid valley of the Hijaz, owing its prosperity to two things: trade and the sacred. It lay upon the caravan route that carried the goods of the Indian Ocean and Yemen northward to Syria and the Mediterranean, and it was governed by the tribe of Quraysh, who were both its merchants and the custodians of its shrine. That shrine was the Kaʿba, a cube of stone which Islamic belief holds to have been raised by the patriarch Ibrāhīm (Abraham) and his son Ismāʿīl (Ishmael) as the first house of the worship of the one God. By the sixth century, however, it had become the centre of a thriving polytheism: the tradition records that it housed some three hundred and sixty idols, presided over by a chief deity called Hubal. The Arabs of the Hijaz already acknowledged a supreme creator-god whom they called Allāh — the word means simply &lsquo;the God&rsquo; — but they associated with Him a host of lesser deities and intercessors, and venerated in particular three goddesses regarded as His daughters: al-Lāt, al-ʿUzzā, and Manāt, whom the Qurʾān would name and reject (Sūrat al-Najm 53:19&ndash;20).</p>
+      <p>To this shrine the tribes came on pilgrimage in the sacred months, when raiding and bloodshed were forbidden — a rite, the ḥajj, far older than Islam, which Islam would purify and reclaim. And amid the prevailing idolatry there were, the sources tell us, a few seekers known as the ḥunafāʾ — men such as Zayd ibn ʿAmr and Waraqa ibn Nawfal — who had rejected the idols and groped after the pure monotheism of Ibrāhīm. Jewish and Christian communities, too, were scattered through the peninsula: Jews at the northern oasis of Yathrib, the town later called Medina, and Christians at Najrān and among certain tribes. The religious soil of Arabia, in short, was neither barren nor uniform; it was a ferment of paganism, half-remembered monotheism, Judaism, and Christianity, waiting upon a catalyst.</p>
+      <p>Into this world, in the Year of the Elephant, the Prophet Muḥammad <span class="salla" lang="ar">&#65018;</span> was born, in Mecca, to the clan of Banū Hāshim of the tribe of Quraysh. His father, ʿAbd Allāh, had died before his birth; his mother, Āmina bint Wahb, would die when he was a small child, leaving him in the care first of his grandfather ʿAbd al-Muṭṭalib and then of his uncle Abū Ṭālib. He would grow to manhood as a respected and trusted member of his community — known, the tradition records, as al-Amīn, &lsquo;the trustworthy&rsquo; — and it would not be until around the year 610, in his fortieth year, that he received in a cave above Mecca the first of the revelations that became the Qurʾān. All of that lay in the future at the moment of his birth. The point for this survey is the sheer magnitude of what was beginning, unseen, at the margin of the great powers&rsquo; world. The wealth and the armies of the age were concentrated at Constantinople and Ctesiphon; yet within a single century of the birth we have just described, the followers of the man born that year would have overthrown the Sasanian Empire entirely, stripped Byzantium of Syria, Egypt, and North Africa, and carried a new faith and a new language from the Atlantic to the frontiers of India and China.</p>
+
+      <h2>India: A Brilliance Without Empire</h2>
+      <p>East of Persia, the Indian subcontinent in 570 CE had recently lost its unifying power. The Gupta Empire, whose three centuries of rule are remembered as the classical golden age of Hindu civilisation — the age of the great Sanskrit poet Kālidāsa and of extraordinary advances in mathematics, astronomy, and the arts — had fragmented by the middle of the sixth century, broken in part by the invasions of a people the Indians called the Hūṇas, a branch of the Hunnic peoples who also troubled Persia and Rome. In the north, the land had dissolved into a patchwork of regional kingdoms; the conqueror Harsha, who would briefly reunite much of the north, was not yet born. In the south, the great dynasties of the Deccan and the Tamil country — the Chālukyas, the Pallavas, the Pāṇḍyas — pursued their own vigorous careers.</p>
+      <p>Politically divided, India remained an intellectual powerhouse without rival. It was here, around the turn of the sixth century, that the mathematician Āryabhaṭa composed his <em>Āryabhaṭīya</em> (499 CE), a work that gave a strikingly accurate value for π, set out a table of sines, and proposed — a thousand years before Copernicus was heard in Europe — that the apparent daily rotation of the heavens is caused by the rotation of the earth upon its axis. It was in India, too, that the decimal place-value system of numerals and the use of a symbol for zero were being perfected — the single most consequential invention in the history of arithmetic, which would pass by way of the Arabs to the whole world, and which we still, with unconscious accuracy, call the Arabic numerals. The cave-temples of Ajanta and the dawning rock-cut shrines of Ellora belong to this brilliant, fractured age, in which Hinduism in its classic form and a still-flourishing Indian Buddhism shared the religious landscape.</p>
+
+      <h2>China: The Age of Division</h2>
+      <p>At the far end of Eurasia, the China of 570 CE presents a mirror to the fallen West. In our previous survey China had been a single Han empire of sixty million, the equal of Rome. But the Han had collapsed in 220 CE, and China had then endured nearly four centuries of division — the long era known as the Northern and Southern Dynasties. In 570 the country was split: in the north, two rival states, the Northern Zhou and the Northern Qi, ruled over a population much intermarried with the steppe peoples who had conquered it; in the south, the Chen dynasty held the Yangtze lands from its capital at modern Nanjing. As Rome had been one and was now many, so China had been one and was now many — but, crucially, the Chinese division was about to end. In 581 CE, only a decade beyond our window, the Sui dynasty would seize the north and, in 589, conquer the south, reuniting China after three and a half centuries and inaugurating the great medieval flowering of the Tang. In 570 that reunification was imminent but unaccomplished.</p>
+      <p>Buddhism, which had entered China along the Silk Road in the Han twilight, had by now sunk deep roots, and the period of division was in many ways its golden age in China — an age of vast monasteries, colossal cave-sculptures, and pilgrim-scholars. It was not without its convulsions: the emperor of the Northern Zhou launched a sweeping persecution of Buddhism in the 570s, the better to harness the realm&rsquo;s wealth and manpower for the coming wars of reunification. And from China the faith was even then reaching the islands of Japan, to whose court Buddhism is traditionally said to have been introduced in 552 CE — a date that falls squarely within our window, and that marks the beginning of one of the world&rsquo;s great religious and cultural transformations.</p>
+
+      <h2>The Steppe: The Coming of the Turks</h2>
+      <p>Between the settled empires, across the immense grasslands from Mongolia to the Black Sea, a new power had just arisen that would shape the next thousand years of Eurasian history. In 552 CE a chieftain named Bumin overthrew his overlords and founded the First Turkic Khaganate — the earliest state in history to bear the name of the Turks. Within a decade the Turks, in alliance with Sasanian Persia, had destroyed the Hephthalites, the so-called White Huns who had dominated Central Asia and harried both Persia and India; and the Turkic realm, briefly the largest land empire the world had yet seen, came to straddle the Silk Road and to share a frontier with Persia, with China, and — by way of the steppe corridor north of the Black Sea — with Byzantium itself.</p>
+      <p>The Turks understood their commercial advantage, and in 568 CE a Turkic embassy, led by a Sogdian merchant named Maniakh, reached Constantinople to propose a joint commerce in silk and a joint war against Persia — one of the more remarkable diplomatic episodes of the age, linking the courts of the eastern steppe and the eastern Mediterranean directly for the first time. Meanwhile another steppe people displaced by the Turkic expansion, the Avars, had ridden westward into the heart of Europe and established in the Hungarian plain a khaganate that would terrorise the Balkans and the Franks for two centuries. The appearance of the Turks as a named power upon the world stage is one of the quietly momentous facts of the sixth century.</p>
+
+      <h2>The Post-Roman West</h2>
+      <p>In the lands where the Western Roman Empire had stood until its formal extinction in 476 CE, a new political order had taken shape: a mosaic of kingdoms ruled by the Germanic peoples who had settled within the old imperial frontiers. The most durable of these was the kingdom of the Franks in Gaul — modern France and the Rhineland — under the Merovingian dynasty founded by Clovis, who around the year 500 had united the Franks and, decisively, converted to Catholic rather than heretical Christianity, binding the new Frankish monarchy to the Roman Church. By 570 the Frankish realm was divided among Clovis&rsquo;s quarrelsome descendants, whose savage and colourful dynastic feuds are chronicled, with appalled relish, by Bishop Gregory of Tours, our indispensable witness to the sixth-century West.</p>
+      <p>In Spain ruled the Visigoths, still adherents of the Arian form of Christianity that the wider Church deemed heretical, but upon the verge — in 589, just beyond our window — of converting to Catholicism and founding a durable Hispano-Gothic kingdom. In Italy, as we have seen, the Lombards had overrun the north and centre in 568, leaving a patchwork of Lombard duchies and shrinking Byzantine enclaves. And in the city of Rome itself, shrunken and impoverished, shorn of the empire it had once ruled, a new kind of authority was rising in the person of the bishop — the Pope: within twenty years the formidable Gregory the Great would assume the office and, in 597, dispatch the mission that began the conversion of the English. The West of 570 was poorer, more rural, and more fragmented than the West of the year 1; but it was not the lightless &lsquo;Dark Age&rsquo; of legend, and the institutions — the Church above all — that would build medieval Europe were already in place.</p>
+
+      <h2>The British Isles: The Lost Century</h2>
+      <p>Nowhere does the unevenness of the historical record show more starkly than in Britain, which in this period nearly vanishes from written history altogether. Roman rule had ended around 410 CE, and the fifth and sixth centuries saw the gradual settlement of eastern and southern Britain by Germanic peoples from across the North Sea — the Angles, Saxons, and Jutes whose descendants would become the English — and the slow retreat of the native, Christian, Brittonic-speaking Britons into Wales, Cornwall, and the north. The sixth century is the most poorly documented stretch of British history since the Iron Age. Our chief contemporary source is a furious sermon, <em>On the Ruin of Britain</em>, written around the 540s by a British monk named Gildas, who lamented the calamity that had befallen his people but recorded almost no names and no dates.</p>
+      <p>This is the shadowed century to which legend assigns King Arthur — the British war-leader who, in the much later stories, held back the Saxon tide. The honest verdict is that there is no contemporary evidence for Arthur as a historical individual; he may rest upon some real fifth- or sixth-century commander, but he belongs, as we can recover him, to legend rather than to history — a striking thing to have to say of a period so close to the well-lit empires of the Mediterranean. By 570 the patchwork of small Anglo-Saxon kingdoms that would coalesce into England was forming, and it was pagan; Christianity would not return to the English until the close of the century. Ireland, by contrast, never Roman and already Christian, had become a beacon of monastic learning, and in 563 CE the Irish monk Columba founded the monastery of Iona off the Scottish coast, whence the conversion of much of northern Britain would proceed.</p>
+
+      <h2>Sub-Saharan Africa</h2>
+      <p>South of the Sahara, the dominant power of the age was the kingdom of Aksum, in the highlands of modern Ethiopia and Eritrea, whose intervention in Yemen we have already met. Aksum was a Christian state — it had adopted the faith in the fourth century — that struck its own gold coinage, controlled the Red Sea trade, and was reckoned by a contemporary writer among the four great kingdoms of the world, alongside Rome, Persia, and China. Its conquest of Yemen around 525 marked the height of its power; by the century&rsquo;s end, with the Persians installed across the strait, that power was beginning its long contraction, but Aksum remained one of the most sophisticated societies of the age and the seedbed of the enduring Christian civilisation of Ethiopia.</p>
+      <p>Elsewhere in Africa the picture is drawn more from archaeology than from texts. Across the Sahara the camel had by now made regular trans-desert trade possible, and the West African societies that would later crystallise into the great empire of Ghana were taking shape along its southern edge. Throughout central, eastern, and southern Africa the long migration of Bantu-speaking farmers and ironworkers — one of the largest movements of people in human history — continued to carry agriculture, cattle, and iron metallurgy into new lands, a vast and consequential process conducted entirely beyond the horizon of the literate world.</p>
+
+      <h2>The Americas: A World Apart</h2>
+      <p>On the far side of an ocean that no one would cross for another nine hundred years, the peoples of the Americas pursued their histories in complete isolation, ignorant of the Old World as it was ignorant of them. And here the sixth century offers its sharpest inversion of the Old World&rsquo;s fortunes, for while the Mediterranean reeled under cold and plague, the great civilisations of the Americas stood at or near their height. In the forests of modern Guatemala and southern Mexico, the Classic Maya were in their full flower — a constellation of literate city-states, dominated by the long rivalry of the two superpowers Tikal and Calakmul, whose kings raised towering temple-pyramids and recorded their dynasties and wars in the only complete writing system ever developed in the pre-Columbian Americas. The Maya tracked the heavens with great precision, sustained a sophisticated mathematics, and, like the Indians on the other side of the planet and quite independently, employed a symbol for zero.</p>
+      <p>In the highlands of central Mexico the vast city of Teotihuacan — laid out upon a grid around its colossal Pyramids of the Sun and Moon, and home, at its peak, to well over a hundred thousand people, which made it one of the largest cities on earth — was in this very century passing the summit of its power and approaching the violent collapse that would overtake it around 550 to 650 CE. In the Andes of South America the Moche of the northern Peruvian coast were raising their great adobe platforms and producing metalwork and ceramics of astonishing artistry, while the highland states of Tiwanaku and Wari were expanding toward the first true empires of the Andean world. None of these peoples possessed iron, the wheel for transport, or — beyond the Andean llama — large domestic animals; and yet they built cities, mapped the stars, and kept records to rival much of the Old World. They were not, as an older condescension imagined, primitive laggards on a single ladder of progress. They were a wholly independent answer to the question of how human beings might live at scale.</p>
+
+      <h2>Was There a &lsquo;Most Advanced&rsquo; Society?</h2>
+      <p>The question recurs in every instalment of this series, and it carries, as always, a concealed bias: the word &lsquo;advanced&rsquo; quietly rewards cities, writing, states, and monuments, and slights the profound sophistication of those who chose to live otherwise. With that caution entered, the conventional answer for 570 CE points to no single leader but to a handful of peers. The two great western empires — Byzantium, with its Roman law, its domed architecture, and its Greek learning, and Sasanian Persia, with its administration, its scholarship, and its imperial grandeur — stood at the summit of the western world. China, though divided, was a literate, bureaucratic, iron-working civilisation about to reunite into the most powerful state on earth. India, though equally divided, led the world in mathematics and astronomy. And in total isolation the Maya and the builders of Teotihuacan raised monuments and kept records that no contemporary in the Old World would have dismissed.</p>
+      <p>The honest conclusion is the one this series has reached at every date: it is more accurate to speak of several remarkable civilisations, each brilliant by its own lights, than of a single vanguard of mankind. What distinguishes 570, perhaps, is that the centre of gravity of the most powerful states was beginning one of its great historical shifts — away from the exhausted Mediterranean and toward the about-to-be-reunified East, and toward a desert margin that no one yet thought to watch.</p>
+
+      <h2>How Much Contact Was There Between These Peoples?</h2>
+      <p>By the sixth century the Old World was, as it had become around the turn of the era, a single connected system — loosely, indirectly, and at second or third hand, but really. The overland Silk Road still carried goods and ideas across Eurasia, now under the watchful control of the new Turkic khaganate; the monsoon-driven trade of the Indian Ocean still linked the Mediterranean, by way of the Red Sea and the Persian Gulf, to India, South-East Asia, and ultimately China. A vivid emblem of this connection is the story, recorded by the Byzantines, of how around 552 CE two monks smuggled the eggs of the silkworm out of China — concealed, it was said, in a hollow staff — and so founded the Byzantine silk industry and broke the long Persian monopoly upon the trade. Religious ideas travelled the same roads: the Church of the East, the so-called Nestorian Christians whose home was in Sasanian Persia, sent missionaries far along the Silk Road into Central Asia and India, and would reach the Chinese capital within two generations.</p>
+      <p>And yet the limits of this connectedness must be kept in view. The contact was that of trade goods and travellers&rsquo; tales, not of governments or peoples who understood one another; Byzantium and China remained, to each other, lands of rumour at the edge of the map. And between the hemispheres there was still no contact whatever. The Americas and the Old World knew nothing of each other&rsquo;s existence, and would continue in mutual ignorance for nine centuries more. The connected world of 570 was a single Old World system; the planet as a whole was not yet one.</p>
+
+      <h2>The Question of Race</h2>
+      <p>As in every survey in this series, it must be said clearly that the racial categories of the modern world do not apply to the sixth century and were not built for it. Humanity then, as now and always, was a single species varying continuously across the globe, and the peoples of 570 sorted one another not by the crude colour-coded races of later centuries but by the things that mattered to them: religion above all, then language, citizenship, and tribe. A Greek-speaking Christian of Constantinople and a Latin-speaking Christian of Carthage felt themselves kin across a difference of complexion; a Persian Zoroastrian and an Arab idolater were divided by faith, not by phenotype. To project the racial map of the nineteenth or twentieth century back upon this world is to misunderstand it at the most basic level.</p>
+
+      <h2>The Languages of the Age</h2>
+      <p>For most of the literate Old World we can now name, and read, the languages of the age. Greek was the tongue of the Byzantine state and Church and of a great Christian literature; Latin, receding in the East, remained the language of the Western Church and of learning in the post-Roman kingdoms. Syriac, a form of Aramaic, was the great lingua franca of Near Eastern Christianity and scholarship, the vehicle in which much Greek philosophy and science would pass to the Arabs. Middle Persian, or Pahlavi, was the language of Sasanian Persia and of the Zoroastrian scriptures. Sanskrit and its derived Prakrits carried the learning and literature of India; a middle form of Chinese served the world&rsquo;s oldest continuous literary tradition; Geʿez served Christian Aksum, Coptic the Egyptian Church, Armenian its own ancient nation. And across the steppe the Turkic language was now spoken from Mongolia to the west, though its earliest inscriptions lay a century and more in the future.</p>
+      <p>Two tongues deserve special mention on the eve of their transformation. The first is Arabic, already a magnificent vehicle of oral poetry, which was about to become — through the Qurʾān — one of the great scriptural, literary, and administrative languages of the world, and to spread across three continents. The second is the silence that still surrounds most of humanity: the unwritten languages of sub-Saharan Africa, of the Americas, of the Pacific, and of the European and Asian countryside, spoken by the great majority of the living and recorded by almost none of them, and so largely lost to us. Even in this most articulate of ages, history speaks chiefly for the literate few.</p>
+
+      <h2>Religion: The Great Hinge</h2>
+      <p>It is in the history of religion that the sixth century reveals itself as one of the true hinges of the human story, and the survey is best ended there. Christianity was now the dominant faith of the Mediterranean world, but it was a Christianity bitterly divided — not yet between Catholic and Orthodox, a rupture centuries away, but over the nature of Christ. The Council of Chalcedon of 451 CE had defined Christ as one person in two natures, divine and human; great Churches rejected the formula, and by 570 the Christian East was split between the Chalcedonian establishment of Constantinople, the Miaphysite Churches of Egypt, Ethiopia, Armenia, and much of Syria, and the Church of the East in Persia. These were not academic quarrels; they shaped the loyalties of whole provinces, and the disaffection of Miaphysite Egypt and Syria would help to explain how readily those lands fell to the Arabs in the following century.</p>
+      <p>Beyond the Christian world, Zoroastrianism remained the state religion of Persia, and Judaism endured, scattered and resilient, across the empires, its rabbinic learning crowned in this very period by the completion of the Babylonian Talmud in the academies of Mesopotamia. Buddhism flourished from India through Central Asia to China and, newly, to Japan; Hinduism stood in its classic form across the subcontinent. The great religious map of the Old World was, in most respects, the map we should recognise today — with one immense exception. The youngest of the world faiths did not yet exist. Islam was not a religion in 570 CE; it was an event waiting in the womb of time, bound up with the life of the child whose birth that year the tradition records. Within sixty years of that birth the Arabian peninsula would be united under the worship of the one God; within a century, as we have noted, the new faith would have toppled one of the two great empires of this survey and torn the richest provinces from the other. No survey written from the vantage of 570 could have predicted it. That is the abiding lesson of the date.</p>
+
+      <h2>The Frontier of Knowledge</h2>
+      <p>It is fitting to close, as the earlier essays did, upon the moving frontier between what is known and what is not — and to mark how strangely that frontier runs in the sixth century. Ten thousand years ago the whole of human experience lay on the unknowable side of the line, recoverable only through stone and bone. Five thousand years ago, in two river valleys and a handful of clay tablets, the line had just begun to give way. Two thousand years ago, across the breadth of the literate Old World, it had given way for good, and history had become a roar rather than a whisper. Fifteen hundred years ago that historical world endured, fuller and better documented than ever across most of Eurasia — and yet, in the fogs of post-Roman Britain, the light of the written record guttered almost to nothing, so that within sight of the best-recorded empires in human history a whole society slipped back, for a century, into the half-darkness of legend. The frontier of knowledge, this date reminds us, is not a single advancing line but a ragged and uneven thing, bright here and dim there even within one age.</p>
+      <p>And the deeper lesson of the sixth century is one of humility before history itself. The men who held power in 570 — the heirs of Justinian in their domed and golden city, the King of Kings in his vaulted hall at Ctesiphon — could see, with the clarity of the well-informed, the shape of the world and the location of its wealth and its danger. Not one of them was looking at Mecca. The hinge upon which their world was about to turn lay not at the centre, where the armies and the treasuries were, but at the unregarded margin, in the life of a child born that year in a trading town in the desert. It is the kind of thing history does, and rarely announces. This essay, written fifteen hundred years further on, is a distant link in the long human conversation that the sixth century carried forward through cold and plague and war; and if it has a moral, it is that the conversation&rsquo;s most decisive turns are seldom heard, by those alive at the time, above the noise of the powerful.</p>
+
+      <section class="takeaways">
+        <h2>Key Takeaways</h2>
+        <ol>
+          <li>&lsquo;Fifteen hundred years ago&rsquo; falls around 526 CE, but this survey takes as its datum the world of around 570 CE — the long sixth century, and the eve of the birth of the Prophet Muḥammad <span class="salla" lang="ar">&#65018;</span>.</li>
+          <li>It is the first survey in this series to describe a falling rather than a rising world: for the first time, world population had stopped growing and may briefly have shrunk.</li>
+          <li>One of the two giants of the previous survey, the Western Roman Empire, had already fallen in its homeland (476 CE); the sixth century is the hinge between the ancient and the medieval worlds.</li>
+          <li>The age was struck by a severe climate downturn — the Late Antique Little Ice Age (c. 536&ndash;660 CE) — triggered by great volcanic eruptions in 536, 540, and 547; in 536 a dust veil dimmed the sun for some eighteen months, as Procopius recorded.</li>
+          <li>From 541 CE the Plague of Justinian — the first recorded pandemic of <em>Yersinia pestis</em>, now confirmed by ancient DNA — swept the Mediterranean; its true scale is genuinely disputed between &lsquo;maximalist&rsquo; and &lsquo;minimalist&rsquo; historians.</li>
+          <li>World population stood at roughly 200 million — little changed from the turn of the era — with China and India the demographic heavyweights; the figures are rough and the distribution largely guesswork.</li>
+          <li>The Near East was divided between two exhausted superpowers: the Eastern Roman (Byzantine) Empire and the Sasanian Empire of Persia, perennial rivals soon to ruin each other in the war of 602&ndash;628.</li>
+          <li>Justinian (r. 527&ndash;565) had reconquered much of the West and left two enduring monuments — the <em>Corpus Juris Civilis</em> and Hagia Sophia (537) — but his gains were already unravelling, with the Lombards overrunning Italy in 568.</li>
+          <li>Sasanian Persia under Khosrow I Anūshirwān (r. 531&ndash;579) was at a height of just rule and learning, its capital at Ctesiphon, its faith Zoroastrian, its court a refuge for Greek philosophy.</li>
+          <li>Arabia lay between the empires as an unregarded margin; pre-Islamic Mecca, governed by Quraysh, centred on the Kaʿba, by then home to many idols, though the Arabs already acknowledged a high god, Allāh.</li>
+          <li>The Year of the Elephant — the failed Aksumite (Ethiopian) assault on Mecca under Abraha — is, by the most widely held tradition, the year of the Prophet&rsquo;s birth, and the subject of Sūrat al-Fīl (Qurʾān 105); the precise year is debated, the significance is not.</li>
+          <li>The Prophet Muḥammad <span class="salla" lang="ar">&#65018;</span> was born in Mecca, of the clan of Banū Hāshim, and orphaned young; his prophetic mission would begin only around 610 CE — yet within a century of his birth his followers would overthrow Sasanian Persia and strip Byzantium of its richest provinces.</li>
+          <li>India had lost the unifying Gupta Empire and fragmented, but remained the world&rsquo;s leader in mathematics and astronomy — the home of Āryabhaṭa (the <em>Āryabhaṭīya</em>, 499 CE), of accurate astronomy, and of the decimal place-value system and the symbol for zero.</li>
+          <li>China had been divided for nearly four centuries (the Northern and Southern Dynasties) but stood on the brink of reunification under the Sui (581&ndash;589) and the glory of the Tang; Buddhism had taken deep root and reached Japan (traditionally 552 CE).</li>
+          <li>The First Turkic Khaganate, founded in 552 CE, was the new great power of the steppe; allied with Persia it destroyed the Hephthalites, controlled the Silk Road, and sent an embassy to Constantinople in 568.</li>
+          <li>The post-Roman West was a mosaic of Germanic kingdoms — Franks, Visigoths, Lombards — in which the Catholic Church and the rising papacy were the durable institution; it was poorer and more rural, but not the lightless &lsquo;Dark Age&rsquo; of legend.</li>
+          <li>Britain nearly vanished from written history: the Anglo-Saxon settlement was under way, the chief source is the monk Gildas, and the period is the shadowed setting of the legend of Arthur, for whom no contemporary evidence survives; Christian Ireland, by contrast, flourished (Iona founded 563).</li>
+          <li>In the Americas, in total isolation, the Classic Maya (Tikal and Calakmul) were at their height with full writing and the symbol for zero, Teotihuacan was passing its vast peak, and the Moche, Tiwanaku, and Wari flourished in the Andes — without iron, the wheel, or large draft animals.</li>
+          <li>By the conventional measures the leading societies were the two western empires, a divided but sophisticated China, and a brilliant India — but the Americas&rsquo; achievements confirm the series&rsquo; recurring lesson: several remarkable civilisations, not a single ladder of progress; and modern racial categories do not apply to this world, which sorted itself by faith, language, and tribe.</li>
+          <li>The sixth century is one of the great hinges of religious history: Christianity dominant but riven over the nature of Christ, Zoroastrianism the faith of Persia, the Babylonian Talmud completed, Buddhism reaching Japan — and Islam, the youngest world faith, not yet in existence but about to be born at the desert margin, unseen by any power of the age.</li>
+        </ol>
+      </section>
+
+      <section class="sources">
+        <h2>Sources</h2>
+        <p>World population estimates: C. McEvedy &amp; R. Jones, <em>Atlas of World Population History</em> (1978); the HYDE database (Klein Goldewijk et al.); J.-N. Biraben, &lsquo;Essai sur l&rsquo;évolution du nombre des hommes&rsquo; (1979).</p>
+        <p>Late Antiquity in general: P. Brown, <em>The World of Late Antiquity, AD 150&ndash;750</em> (1971) and <em>The Rise of Western Christendom</em> (2003); A. Cameron, <em>The Mediterranean World in Late Antiquity</em> (2nd edn, 2012).</p>
+        <p>The Late Antique Little Ice Age and the dust veil of 536: U. Büntgen et al., &lsquo;Cooling and societal change during the Late Antique Little Ice Age from 536 to around 660 AD,&rsquo; <em>Nature Geoscience</em> 9 (2016); M. McCormick et al., &lsquo;Climate Change during and after the Roman Empire,&rsquo; <em>Journal of Interdisciplinary History</em> 43 (2012); Procopius, <em>History of the Wars</em>, IV.14.</p>
+        <p>The Plague of Justinian: K. Harper, <em>The Fate of Rome: Climate, Disease, and the End of an Empire</em> (2017); L. Mordechai et al., &lsquo;The Justinianic Plague: An Inconsequential Pandemic?,&rsquo; <em>PNAS</em> 116 (2019); L. Mordechai &amp; M. Eisenberg, &lsquo;Rejecting Catastrophe: The Case of the Justinianic Plague,&rsquo; <em>Past &amp; Present</em> 244 (2019); D. M. Wagner et al., &lsquo;Yersinia pestis and the Plague of Justinian, 541&ndash;543 AD,&rsquo; <em>The Lancet Infectious Diseases</em> 14 (2014).</p>
+        <p>Byzantium and Justinian: J. J. Norwich, <em>Byzantium: The Early Centuries</em> (1988); J. Herrin, <em>Byzantium: The Surprising Life of a Medieval Empire</em> (2007); the relevant volumes of the <em>Cambridge History of the Byzantine Empire</em>.</p>
+        <p>Sasanian Persia: T. Daryaee, <em>Sasanian Persia: The Rise and Fall of an Empire</em> (2009); the <em>Cambridge History of Iran</em>, Vol. 3.</p>
+        <p>Pre-Islamic Arabia and the Arabs: R. G. Hoyland, <em>Arabia and the Arabs: From the Bronze Age to the Coming of Islam</em> (2001); G. W. Bowersock, <em>The Throne of Adulis: Red Sea Wars on the Eve of Islam</em> (2013); T. Mackintosh-Smith, <em>Arabs: A 3,000-Year History</em> (2019).</p>
+        <p>The Year of the Elephant and the life of the Prophet: the Qurʾān, Sūrat al-Fīl (105) and Sūrat al-Najm (53:19&ndash;20); the <em>Sīra</em> of Ibn Isḥāq in the recension of Ibn Hishām (trans. A. Guillaume, <em>The Life of Muhammad</em>, 1955); al-Ṭabarī, <em>Taʾrīkh al-rusul wa-l-mulūk</em>; M. Lings, <em>Muhammad: His Life Based on the Earliest Sources</em> (1983); H. Kennedy, <em>The Prophet and the Age of the Caliphates</em> (3rd edn, 2016).</p>
+        <p>Qurʾānic text and translation: the ʿUthmānic text of Sūrat al-Fīl; English rendering after M. A. S. Abdel Haleem, <em>The Qurʾan</em> (Oxford World&rsquo;s Classics, 2004).</p>
+        <p>Post-Gupta India and Āryabhaṭa: R. Thapar, <em>Early India: From the Origins to AD 1300</em> (2002); U. Singh, <em>A History of Ancient and Early Medieval India</em> (2008); K. Plofker, <em>Mathematics in India</em> (2009).</p>
+        <p>China in the age of division and the Sui reunification: M. E. Lewis, <em>China between Empires: The Northern and Southern Dynasties</em> (2009); A. F. Wright, <em>The Sui Dynasty</em> (1978).</p>
+        <p>The Turks and the steppe: P. B. Golden, <em>An Introduction to the History of the Turkic Peoples</em> (1992); C. I. Beckwith, <em>Empires of the Silk Road</em> (2009).</p>
+        <p>The post-Roman West: C. Wickham, <em>The Inheritance of Rome: A History of Europe from 400 to 1000</em> (2009); P. Heather, <em>The Fall of the Roman Empire</em> (2005); Gregory of Tours, <em>The History of the Franks</em> (trans. L. Thorpe, 1974).</p>
+        <p>Sub-Roman Britain and the question of Arthur: Gildas, <em>De Excidio Britanniae</em> (trans. M. Winterbottom, 1978); N. J. Higham, <em>King Arthur: The Making of the Legend</em> (2018); R. Collins, <em>Early Medieval Europe, 300&ndash;1000</em> (3rd edn, 2010).</p>
+        <p>Aksum and Christian Ethiopia: S. C. Munro-Hay, <em>Aksum: An African Civilisation of Late Antiquity</em> (1991).</p>
+        <p>Sub-Saharan Africa and the Bantu expansion: J. Iliffe, <em>Africans: The History of a Continent</em> (2nd edn, 2007).</p>
+        <p>The Classic Maya, Teotihuacan, and the Andes: M. D. Coe &amp; S. Houston, <em>The Maya</em> (9th edn, 2015); standard regional syntheses of Teotihuacan and of the Moche, Tiwanaku, and Wari.</p>
+        <p>The Silk Road, the Indian Ocean trade, and the Byzantine silk episode: R. McLaughlin, <em>The Roman Empire and the Indian Ocean</em> (2014); the sericulture account of Procopius and of Theophanes of Byzantium; standard histories of the Church of the East and its mission to Central Asia and China.</p>
+      </section>
+    </div>
+  </section>
+
+  <!-- ================= ESSAY V (stub) ================= -->
+  <section class="tab-panel" id="e5">
+    <div class="panel-inner">
+      <h1 class="title">Banū Ādam &amp; the Coalescent</h1>
+      <p class="standfirst">The concluding essay of the series. Having travelled from the first farmers to the eve of Islam, we turn at last to the oldest origin of all — and to what the educated Sunni Muslim is to make of the finding, now as secure as science offers, that the present human gene pool cannot descend from a single pair.</p>
+      <div class="byline">By Claude Opus</div>
+      <div class="titlerule"></div>
+      <p class="stub">Full text to be poured into this edition.</p>
+
+      <div class="colophon">
+        <span class="orn">&#10038;</span>
+        The Bilal Papers &middot; Origins &middot; collected edition &middot; 2026<br>
+        Set in Amiri and FreeSans
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    root.classList.remove('no-js');
+
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+    var panels = Array.prototype.slice.call(document.querySelectorAll('.tab-panel'));
+
+    function show(id, updateHash) {
+      if (!document.getElementById(id)) { id = 'cover'; }
+      panels.forEach(function (p) { p.classList.toggle('is-active', p.id === id); });
+      tabs.forEach(function (t) { t.classList.toggle('is-current', t.getAttribute('data-panel') === id); });
+      if (updateHash && history.replaceState) { history.replaceState(null, '', '#' + id); }
+      window.scrollTo(0, 0);
+    }
+
+    // Any link that points at a panel (tab bar or in-text cross-reference)
+    document.querySelectorAll('a[data-panel]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        show(a.getAttribute('data-panel'), true);
+      });
+    });
+
+    // Deep-linking and back/forward
+    window.addEventListener('hashchange', function () {
+      show(location.hash.replace('#', ''), false);
+    });
+
+    var start = location.hash ? location.hash.replace('#', '') : 'cover';
+    show(start, false);
+  })();
+</script>
+
+</body>
+</html>
