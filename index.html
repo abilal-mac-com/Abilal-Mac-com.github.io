@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Bilal Papers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF9F4;
+    --panel:#FFFDF9;
+    --ink:#1d1b19;
+    --ink-soft:#5a544c;
+    --house:#8B0000;
+    --hair:#DAD2C4;
+    --measure:44rem;
+    --display:'Helvetica Neue',Helvetica,Arial,'Segoe UI',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Amiri',Georgia,'Times New Roman',serif;
+    font-size:clamp(1.08rem,1.0rem + 0.5vw,1.24rem);
+    line-height:1.7;
+    text-rendering:optimizeLegibility;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---- Masthead ---- */
+  .masthead{border-bottom:1px solid var(--hair)}
+  .masthead-inner{max-width:38rem;margin:0 auto;padding:4.4rem 1.5rem 3.4rem;text-align:center}
+  .imprint-eyebrow{font-family:var(--display);text-transform:uppercase;letter-spacing:.3em;font-size:.66rem;font-weight:700;color:var(--house);margin:0}
+  .wordmark{
+    font-family:var(--display);
+    text-transform:uppercase;
+    font-weight:700;
+    letter-spacing:.06em;
+    line-height:1.04;
+    font-size:clamp(2.3rem,1.6rem + 3.4vw,3.9rem);
+    color:var(--ink);
+    margin:1.15rem 0 1rem;
+  }
+  .ethos{font-style:italic;color:var(--ink-soft);font-size:1.06em;line-height:1.5;max-width:28rem;margin:0 auto}
+  .orn{color:var(--house);font-size:1.3rem;line-height:1;margin:1.5rem 0 0}
+
+  /* ---- Editions ---- */
+  main{max-width:var(--measure);margin:0 auto;padding:2.6rem 1.25rem 1rem}
+  .section-label{
+    font-family:var(--display);text-transform:uppercase;letter-spacing:.2em;
+    font-size:.68rem;font-weight:700;color:var(--house);
+    text-align:center;margin:0 0 1.8rem;
+  }
+
+  .edition{
+    display:block;text-decoration:none;color:inherit;
+    background:var(--panel);
+    border:1px solid var(--hair);
+    border-left:3px solid var(--house);
+    border-radius:2px;
+    padding:1.7rem 1.6rem;
+    margin:0 0 1.4rem;
+    transition:border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+  }
+  .edition:hover,
+  .edition:focus-visible{
+    border-color:var(--house);
+    box-shadow:0 6px 22px rgba(139,0,0,.08);
+    transform:translateY(-2px);
+    outline:none;
+  }
+  .edition:focus-visible{outline:2px solid var(--house);outline-offset:3px}
+
+  .edition-kicker{
+    display:block;font-family:var(--display);text-transform:uppercase;
+    letter-spacing:.16em;font-size:.62rem;font-weight:700;color:var(--house);
+    margin-bottom:.6rem;
+  }
+  .edition-title{
+    display:block;font-family:var(--display);text-transform:uppercase;
+    letter-spacing:.04em;font-weight:700;line-height:1.06;
+    font-size:clamp(1.5rem,1.2rem + 1.4vw,2rem);color:var(--ink);
+    margin-bottom:.55rem;
+  }
+  .edition-standfirst{
+    display:block;font-style:italic;color:var(--ink-soft);
+    font-size:1.02em;line-height:1.5;margin-bottom:1rem;
+  }
+  .edition-cta{
+    display:inline-block;font-family:var(--display);text-transform:uppercase;
+    letter-spacing:.12em;font-size:.66rem;font-weight:700;color:var(--house);
+  }
+  .edition-cta .arrow{transition:transform .18s ease;display:inline-block}
+  .edition:hover .edition-cta .arrow,
+  .edition:focus-visible .edition-cta .arrow{transform:translateX(4px)}
+
+  /* ---- Colophon ---- */
+  .colophon{
+    max-width:var(--measure);margin:0 auto;
+    padding:2.4rem 1.25rem 3.4rem;text-align:center;
+    font-family:var(--display);text-transform:uppercase;letter-spacing:.18em;
+    font-size:.6rem;color:var(--ink-soft);line-height:1.9;
+  }
+  .colophon .orn{display:block;font-size:1rem;letter-spacing:0;margin:0 0 .55rem}
+
+  @media (max-width:560px){
+    .masthead-inner{padding:3.4rem 1.15rem 2.8rem}
+    main{padding:2.2rem 1.05rem 1rem}
+    .edition{padding:1.4rem 1.2rem}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .edition,.edition-cta .arrow{transition:none}
+    .edition:hover,.edition:focus-visible{transform:none}
+  }
+</style>
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead-inner">
+      <p class="imprint-eyebrow">The Imprint</p>
+      <h1 class="wordmark">The Bilal Papers</h1>
+      <p class="ethos">Long-form essays in history, scripture, and reason.</p>
+      <div class="orn">&#10038;</div>
+    </div>
+  </header>
+
+  <main>
+    <h2 class="section-label">Editions</h2>
+
+    <!-- ===== ORIGINS ===== -->
+    <a class="edition" href="origins/">
+      <span class="edition-kicker">Collected Edition &middot; 2026</span>
+      <span class="edition-title">Origins</span>
+      <span class="edition-standfirst">A Survey of the World and Its Peoples, at Five Removes in Time &mdash; from the First Farmers to the Oldest Question of All.</span>
+      <span class="edition-cta">Read the edition <span class="arrow">&rarr;</span></span>
+    </a>
+
+    <!-- To add a further edition, copy the block above and change the
+         href, kicker, title and standfirst. Each edition lives in its
+         own folder (e.g. origins/, and later a second-title/ folder). -->
+
+  </main>
+
+  <footer class="colophon">
+    <span class="orn">&#10038;</span>
+    The Bilal Papers &middot; 2026<br>
+    Set in Amiri
+  </footer>
+
+</body>
+</html>
