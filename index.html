@@ -48,7 +48,7 @@
   .ethos{font-style:italic;color:var(--ink-soft);font-size:1.06em;line-height:1.5;max-width:28rem;margin:0 auto}
   .orn{color:var(--house);font-size:1.3rem;line-height:1;margin:1.5rem 0 0}
 
-  /* ---- Editions ---- */
+  /* ---- Works ---- */
   main{max-width:var(--measure);margin:0 auto;padding:2.6rem 1.25rem 1rem}
   .section-label{
     font-family:var(--display);text-transform:uppercase;letter-spacing:.2em;
@@ -75,20 +75,25 @@
   }
   .edition:focus-visible{outline:2px solid var(--house);outline-offset:3px}
 
-  .edition-kicker{
+  .edition-field{
     display:block;font-family:var(--display);text-transform:uppercase;
     letter-spacing:.16em;font-size:.62rem;font-weight:700;color:var(--house);
     margin-bottom:.6rem;
   }
   .edition-title{
     display:block;font-family:var(--display);text-transform:uppercase;
-    letter-spacing:.04em;font-weight:700;line-height:1.06;
+    letter-spacing:.04em;font-weight:700;line-height:1.08;
     font-size:clamp(1.5rem,1.2rem + 1.4vw,2rem);color:var(--ink);
-    margin-bottom:.55rem;
+    margin-bottom:.7rem;
   }
-  .edition-standfirst{
-    display:block;font-style:italic;color:var(--ink-soft);
-    font-size:1.02em;line-height:1.5;margin-bottom:1rem;
+  .edition-profile{
+    display:block;color:var(--ink-soft);
+    font-size:1.02em;line-height:1.58;margin-bottom:1.1rem;
+  }
+  .edition-meta{
+    display:block;font-family:var(--display);text-transform:uppercase;
+    letter-spacing:.13em;font-size:.6rem;font-weight:700;color:var(--ink-soft);
+    opacity:.85;margin-bottom:1rem;
   }
   .edition-cta{
     display:inline-block;font-family:var(--display);text-transform:uppercase;
@@ -135,15 +140,34 @@
 
     <!-- ===== ORIGINS ===== -->
     <a class="edition" href="origins/">
-      <span class="edition-kicker">Collected Edition &middot; 2026</span>
+      <span class="edition-field">History &amp; Anthropology</span>
       <span class="edition-title">Origins</span>
-      <span class="edition-standfirst">A Survey of the World and Its Peoples, at Five Removes in Time &mdash; from the First Farmers to the Oldest Question of All.</span>
+      <span class="edition-profile">Five surveys of the human past, each taken at a greater remove in time &mdash; from the first farmers who broke the earth to the oldest question that can be asked of it. Reading backwards from settled history toward the origin of our kind, the edition weighs what the deep past reveals against what scripture holds, and marks where the two meet. It ends at the frontier between what we know and what we do not &mdash; and finds there not a quarrel between reason and revelation, but a concord.</span>
+      <span class="edition-meta">Collected edition &middot; Five essays &middot; 2026</span>
       <span class="edition-cta">Read the edition <span class="arrow">&rarr;</span></span>
     </a>
 
-    <!-- To add a further edition, copy the block above and change the
-         href, kicker, title and standfirst. Each edition lives in its
-         own folder (e.g. origins/, and later a second-title/ folder). -->
+    <!-- ===== REFLECTIONS ON ISLAMIC ESCHATOLOGY ===== -->
+    <a class="edition" href="eschatology/">
+      <span class="edition-field">Eschatology</span>
+      <span class="edition-title">Reflections on Islamic Eschatology &amp; the Divine Plan</span>
+      <span class="edition-profile">Why did God destroy the army of Abrahah to defend His House, yet permit the Qaramitah to wrench the Black Stone from its corner? Moving from the fracture of a single stone to the whole arc of the end of days &mdash; the Mahdi, the Dajjal, the descent of ʿIsa, and the gentle wind that takes the last believing soul &mdash; this essay traces the classical Sunni distinction between what God permits and what He loves. It finds, woven through a tradition that foretells decline, an architecture of mercy in which the believer who holds fast amid corruption may attain a rank the easier ages never offered.</span>
+      <span class="edition-meta">The Quarterly Review &middot; 2026</span>
+      <span class="edition-cta">Read the essay <span class="arrow">&rarr;</span></span>
+    </a>
+
+    <!-- ===== NOT IN VAIN ===== -->
+    <a class="edition" href="not-in-vain/">
+      <span class="edition-field">Philosophy</span>
+      <span class="edition-title">Not in Vain</span>
+      <span class="edition-profile">The young man who rejects a cruel God, this essay argues, is often refusing the right thing for the right reason &mdash; for the deity he has renounced was never the God of classical Islam. Beginning not with dogma but with an invitation to reason, it follows the Qurʾan's own argument from the contingency of the world to a Necessary Being, and from there to a God whose mercy is prior to His wrath. It meets the hardest question honestly &mdash; why a just God permits suffering &mdash; and answers that a world made for trial is not made in vain, and that its accounts are settled in full beyond it.</span>
+      <span class="edition-meta">The Quarterly Review &middot; 2026</span>
+      <span class="edition-cta">Read the essay <span class="arrow">&rarr;</span></span>
+    </a>
+
+    <!-- To add a further work, copy one of the blocks above and change the
+         href, field, title, profile, meta and call to action. Each work lives
+         in its own lowercase folder (e.g. origins/, eschatology/, not-in-vain/). -->
 
   </main>
 
@@ -155,4 +179,3 @@
 
 </body>
 </html>
-
