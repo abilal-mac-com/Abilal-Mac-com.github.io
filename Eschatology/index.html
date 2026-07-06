@@ -1,1 +1,203 @@
-xx
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reflections on Islamic Eschatology &amp; the Divine Plan — The Bilal Papers</title>
+<meta name="description" content="The Kaʿbah, the Qaramitah, the Divine Will, the Major Signs of the Hour, and the mercy within the trial — an exploration of the architecture of mercy in the classical Sunni tradition.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF9F4;
+    --panel:#FFFDF9;
+    --ink:#1d1b19;
+    --ink-soft:#5a544c;
+    --house:#8B0000;
+    --hair:#DAD2C4;
+    --measure:40rem;
+    --display:'Helvetica Neue',Helvetica,Arial,'Segoe UI',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Amiri',Georgia,'Times New Roman',serif;
+    font-size:clamp(1.08rem,1.0rem + 0.5vw,1.26rem);
+    line-height:1.78;
+    text-rendering:optimizeLegibility;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---- Top bar ---- */
+  .topbar{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--hair)}
+  .topbar-inner{max-width:var(--measure);margin:0 auto;padding:.7rem 1.25rem}
+  .brand-link{font-family:var(--display);text-transform:uppercase;letter-spacing:.2em;font-weight:700;font-size:.62rem;color:var(--house);text-decoration:none}
+  .brand-link:hover{color:var(--ink)}
+
+  /* ---- Article ---- */
+  .essay{max-width:var(--measure);margin:0 auto;padding:1.5rem 1.25rem 4rem}
+
+  .field-eyebrow{font-family:var(--display);text-transform:uppercase;letter-spacing:.24em;font-weight:700;font-size:.64rem;color:var(--house);margin:.3rem 0 .9rem}
+
+  h1.title{font-family:var(--display);font-weight:700;letter-spacing:-.012em;line-height:1.1;font-size:clamp(1.85rem,1.35rem + 2.3vw,2.8rem);margin:.2rem 0 .75rem}
+  .standfirst{font-style:italic;font-size:1.06em;line-height:1.5;color:var(--ink-soft);margin:0 0 1rem}
+  .byline{font-family:var(--display);text-transform:uppercase;letter-spacing:.14em;font-weight:700;font-size:.7rem;color:var(--house)}
+  .titlerule{height:2px;background:var(--house);opacity:.85;margin:1.5rem 0 1.9rem}
+
+  .deck{font-style:italic;color:var(--ink-soft);font-size:1.08em;line-height:1.55;margin:0 0 2rem;text-align:left;hyphens:none}
+
+  /* ---- Body ---- */
+  p{margin:0 0 1.15em;text-align:justify;-webkit-hyphens:auto;hyphens:auto}
+  .opening{margin-top:0}
+  .dropcap{float:left;font-family:var(--display);font-weight:700;color:var(--house);font-size:3.5em;line-height:.78;margin:.02em .1em 0 0}
+
+  h2{font-family:var(--display);font-weight:700;font-size:1.32em;line-height:1.22;letter-spacing:-.005em;margin:2.7rem 0 .9rem;clear:both}
+  h2::after{content:"";display:block;width:2.4rem;height:2px;background:var(--house);margin-top:.55rem}
+  h3{font-family:var(--display);font-weight:700;font-size:1.06em;line-height:1.26;letter-spacing:0;color:var(--house);margin:2.1rem 0 .55rem;clear:both}
+
+  .pullquote{font-style:italic;color:var(--house);font-size:1.28em;line-height:1.42;text-align:center;margin:2.3rem auto;padding:1.15rem .5rem;border-top:1px solid var(--house);border-bottom:1px solid var(--house);max-width:34rem}
+
+  /* ---- Feature panel (chronological sequence) ---- */
+  .feature{background:var(--panel);border:1px solid var(--hair);border-left:3px solid var(--house);border-radius:2px;padding:1.4rem 1.45rem;margin:2.3rem 0;clear:both}
+  .feature .flabel{font-family:var(--display);text-transform:uppercase;letter-spacing:.14em;font-weight:700;font-size:.64rem;color:var(--house);margin:0 0 .6rem}
+  .feature p{margin:0;text-align:left;hyphens:none}
+
+  .salla{font-family:'Amiri',serif;font-size:1.15em;line-height:1}
+
+  /* ---- Sources ---- */
+  .sources{margin-top:2.9rem;padding-top:1.35rem;border-top:1px solid var(--hair);font-size:.83em;line-height:1.5;color:var(--ink-soft)}
+  .sources p{margin:0 0 .55em;padding-left:1.3rem;text-indent:-1.3rem;text-align:left;hyphens:none}
+
+  /* ---- Editorial note ---- */
+  .note{margin-top:1.6rem;padding-top:1.2rem;border-top:1px solid var(--hair);font-style:italic;font-size:.86em;line-height:1.55;color:var(--ink-soft);text-align:left;hyphens:none}
+
+  /* ---- Colophon ---- */
+  .colophon{margin:3.2rem 0 2.4rem;text-align:center;font-family:var(--display);text-transform:uppercase;letter-spacing:.18em;font-size:.62rem;color:var(--ink-soft);line-height:1.9}
+  .colophon .orn{display:block;color:var(--house);font-size:1rem;letter-spacing:0;margin-bottom:.55rem}
+
+  @media (max-width:560px){
+    p,.deck{text-align:left}
+    .essay{padding:1.3rem 1.05rem 3.5rem}
+    .feature{padding:1.2rem 1rem}
+    .dropcap{font-size:3.1em}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand-link" href="../">&larr;&nbsp;The Bilal Papers</a>
+  </div>
+</header>
+
+<main>
+  <article class="essay">
+
+    <div class="field-eyebrow">Eschatology</div>
+    <h1 class="title">Reflections on Islamic Eschatology &amp; the Divine Plan</h1>
+    <p class="standfirst">The Kaʿbah, the Qaramitah, the Divine Will, the Major Signs of the Hour, and the Mercy Within the Trial.</p>
+    <div class="byline">By Claude Opus</div>
+    <div class="titlerule"></div>
+
+    <p class="deck">Why did Allah destroy the army of Abrahah but permit the Qaramitah to wrench the Black Stone from its corner? Why does the classical Sunni tradition describe a world in trajectory of decline, yet hold that the believer's reward in such times may exceed that of earlier generations? An exploration of the architecture of mercy that the orthodox sources locate within the unfolding of the Divine plan.</p>
+
+    <h2>I &middot; The fractured Black Stone</h2>
+    <p class="opening"><span class="dropcap">T</span>he Black Stone — al-Hajar al-Aswad — set into the eastern corner of the Kaʿbah is today comprised of several fragments, most accounts describing eight pieces of varying size, bound together within a silver casing. Its current fractured state is the result of multiple historical episodes of damage, the most consequential of which speaks directly to one of the most searching theological questions in the Sunni tradition: why does Allah, who destroyed an entire army to protect His House on one occasion, permit His House to be desecrated on another?</p>
+    <p>During the siege of Makkah in 64 AH (683 CE), when Umayyad forces under Husayn ibn Numayr besieged Abdullah ibn al-Zubayr (radiya Allahu anhu), the Kaʿbah was struck by catapulted stones and caught fire. The intense heat caused the Black Stone to crack. This event is documented by al-Azraqi in his <em>Akhbar Makkah</em> and corroborated by Ibn al-Athir in <em>al-Kamil fi al-Tarikh</em>.</p>
+    <p>The most catastrophic episode, however, occurred in 317 AH (930 CE), when the Qaramitah — a heterodox Ismaʿili sect led by Abu Tahir al-Jannabi — attacked Makkah during the Hajj season. They massacred thousands of pilgrims, desecrated the Zamzam well, and forcibly wrenched the Black Stone from its position. The stone was carried off to their stronghold in al-Ahsa' in eastern Arabia, where it remained for approximately twenty-two years. It was returned in 339 AH (952 CE) in a badly damaged condition. Ibn Kathir, in <em>al-Bidayah wa'l-Nihayah</em>, records that the stone was returned fractured into multiple pieces, and the Abbasid authorities subsequently had the fragments reassembled within a silver frame.</p>
+
+    <h2>II &middot; The Qaramitah: a historical overview</h2>
+    <p>The Qaramitah emerged in the latter half of the third century AH as an offshoot of the Ismaʿili branch of Shiʿism. Their name derives from Hamdan Qarmat, an early propagandist active in the agricultural districts of southern Iraq. Al-Tabari references his activities in his <em>Tarikh al-Rusul wa'l-Muluk</em>.</p>
+    <p>Doctrinally, they subscribed to a form of esoteric (batini) interpretation, holding that the outward meaning of the Qur'an and the Shariʿah concealed a hidden, inner truth accessible only through their imams. This hermeneutical approach led them, in practice, to the abrogation of the fundamental obligations of Islam. Orthodox Sunni heresiographers — including al-Baghdadi in <em>al-Farq bayn al-Firaq</em> and Ibn Hazm in <em>al-Fisal</em> — classified them as extremists who had departed entirely from the fold of Islam.</p>
+    <p>They established a remarkably well-organised polity in the region of al-Bahrayn (encompassing much of eastern Arabia). Under Abu Saʿid al-Jannabi and his sons, the Qaramitah built a quasi-communal system described by al-Muqaddasi in his <em>Ahsan al-Taqasim</em>. Their campaigns of violence against Muslim populations — particularly the Hajj caravans and the Holy Sanctuaries — culminated in the infamous assault on Makkah in 317 AH, one of the most traumatic episodes in Islamic history. The Qarmatian state was eventually overthrown by the Uyunid dynasty around 467 AH (1076 CE), after which the movement effectively ceased to exist.</p>
+
+    <h2>III &middot; The desecration of the Kaʿbah and the Divine will</h2>
+    <p>The Qarmatian atrocity raises an apparent theological tension: if Allah destroyed the army of Abrahah al-Habashi when he marched upon Makkah — as recounted in Surah al-Fil (Q. 105) — why did He permit the Qaramitah to desecrate His House?</p>
+    <h3>The two categories of Divine will</h3>
+    <p>The foundational framework, elaborated extensively by Ibn Taymiyyah in his <em>Majmuʿ al-Fatawa</em> and by Ibn al-Qayyim in <em>Shifa' al-ʿAlil</em>, distinguishes between Allah's universal creative will (<em>al-iradah al-kawniyyah al-qadariyyah</em>) and His legislative will (<em>al-iradah al-shar'iyyah al-diniyyah</em>). The former encompasses everything that occurs in creation. The latter pertains to what Allah commands, loves, and is pleased with. An act of gross disobedience occurs by the universal will of Allah inasmuch as He permits it within His creation, but it is emphatically not in accordance with His legislative will.</p>
+    <h3>The contrast with the army of the elephant</h3>
+    <p>Ibn Kathir articulated the reasoning that Allah's intervention against Abrahah served a specific providential purpose: the preservation of the Sacred House in the period immediately preceding the advent of the Prophet Muhammad <span class="salla" lang="ar">&#65018;</span>, whose birth occurred in the very same year. By the time of the Qarmatian assault, the revelation had been completed, the religion established, and the function of the Kaʿbah secured within the Shariʿah independently of the physical integrity of the structure. The Divine protection of the House operates according to Allah's wisdom in each circumstance, not as a blanket guarantee of physical inviolability.</p>
+    <h3>The sanctity of the believer</h3>
+    <p>A profound point grounded in the hadith narrated by Ibn Majah (no. 3932): the Prophet <span class="salla" lang="ar">&#65018;</span>, looking at the Kaʿbah, stated that the sanctity of the believer is greater before Allah than the sanctity of the House itself. If the sanctity of the believing soul surpasses that of the physical Kaʿbah, and Allah nonetheless permits believers to be tested, then the desecration of the physical structure falls within the same theological logic.</p>
+
+    <h2>IV &middot; The indestructibility of the faith</h2>
+    <p>A stress-test of the framework: what if the custodians of Makkah were one day to replace the Kaʿbah with something entirely profane? The answer, within the classical Sunni framework, is unequivocal: Islam's validity as the final Divine dispensation is not ontologically dependent upon the physical existence of the Kaʿbah.</p>
+    <p>The Kaʿbah is the qiblah and the site of Hajj, but it is not the source of Islam's truth. That source is Allah Himself, and the vehicle of that truth is the Qur'an and the Sunnah, both of which exist independently of any physical edifice. The obligation of Hajj is conditioned upon ability (istitaah), and the qiblah is a direction — the ground retains its sanctity irrespective of what is built upon it. Islam's early community survived the Prophet <span class="salla" lang="ar">&#65018;</span> himself being driven from Makkah. The Companions prayed towards Bayt al-Maqdis before the qiblah was changed. The Qaramitah stole the Black Stone for twenty-two years and the ummah continued. In each case, the faith persisted because its foundations are not architectural. Imam Malik's statement — that the Sunnah is the ark of Nuh, and whoever boards it is saved — captures the principle: the ark is the transmitted knowledge, not the building.</p>
+    <p class="pullquote">Islam's foundations are not architectural, institutional, or even textual in the material sense. They are located in the relationship between the believing soul and its Creator.</p>
+
+    <h2>V &middot; What endures until the end</h2>
+    <h3>The gentle wind</h3>
+    <p>The hadith in Sahih Muslim (no. 117), narrated from Abdullah ibn Amr, describes a wind that Allah will send — softer than silk — which will take the soul of every person in whose heart resides even a mustard seed's weight of faith. After this wind has passed, only the worst of creation will remain, and it is upon them that the Hour will be established. This event functions as a decisive temporal marker between a world in which faith exists and one in which it does not.</p>
+    <h3>Will there always be believers?</h3>
+    <p>Yes — until the gentle wind, but not beyond it. The hadith of the Ta'ifah al-Mansurah (the Victorious Group), narrated in both al-Bukhari (no. 7311) and Muslim (no. 1920), confirms that there will always remain a group from this ummah manifest upon the truth. Al-Nawawi commented that this group may be scattered across different lands and need not constitute a single political entity.</p>
+    <h3>Will the Qur'an endure?</h3>
+    <p>Allah states in Surah al-Hijr (Q. 15:9) that He is the guardian of the Reminder. The scholars understood this preservation as operative during the period in which faith exists upon the earth. There are narrations indicating that near the end of time, the Qur'an will be lifted — removed from the written pages and from the hearts of the memorisers. This is not a failure of the Divine guarantee but its completion: the guarantee pertains to the duration for which the Qur'an is needed.</p>
+    <h3>Will there always be an Islamic state?</h3>
+    <p>No. There is no guarantee of a continuous Islamic polity. The hadith in the <em>Musnad</em> of Imam Ahmad (no. 18406) describes a cyclical pattern — prophethood, rightly-guided caliphate, biting kingship, tyrannical kingship, and then a return to caliphate upon the prophetic method — clearly envisaging prolonged periods during which the political order falls far short of legitimate Islamic governance. The Ta'ifah al-Mansurah guarantees faithful witness, not sovereignty.</p>
+
+    <h2>VI &middot; The major signs of the Hour</h2>
+    <h3>The Mahdi</h3>
+    <p>The Mahdi is a man from the Ahl al-Bayt, a descendant of Fatimah (radiya Allahu anha), whose name matches the Prophet's name — Muhammad ibn Abdillah. He emerges into a world filled with oppression and tyranny, and his central function is encapsulated in the phrase that recurs across the narrations: he will fill the earth with justice and equity as it was filled with oppression and tyranny. The narrations describe the bayʿah being given to him at the Kaʿbah, extraordinary material prosperity under his rule, and his military leadership during the period of the greatest tribulations. He is a distinct figure from ʿIsa ibn Maryam; the narration in Muslim (no. 156) describes ʿIsa descending and praying behind the Mahdi, confirming their distinctness within a single scene.</p>
+
+    <div class="feature">
+      <p class="flabel">The Chronological Sequence</p>
+      <p>Drawn principally from the hadith of al-Nawwas ibn Samʿan in Sahih Muslim (no. 2937): the emergence of the Mahdi; the appearance of the Dajjal; the descent of ʿIsa and his defeat of the Dajjal; the emergence and Divine destruction of Ya'juj and Ma'juj; a period of blessed peace under ʿIsa; the death of ʿIsa; a period of renewed decline; the remaining major signs — including the Smoke, the Beast, the rising of the sun from the west, three great landslides, and a fire from Yemen — whose precise internal ordering is less certain; the gentle wind; and finally the establishment of the Hour upon the worst of creation.</p>
+    </div>
+
+    <h3>Al-Masih al-Dajjal: the false Messiah</h3>
+    <p>The Dajjal is, by the explicit statement of the Prophet <span class="salla" lang="ar">&#65018;</span> in Sahih Muslim (no. 2946), the single greatest trial that will befall the human race from the creation of Adam to the Day of Judgement. He is a human being, described with concrete physical characteristics — blind or defective in one eye, with the letters kaf, fa', and ra' inscribed upon his forehead, readable by every believer. He will claim first prophethood and then divinity, and will be granted extraordinary powers by the permission of Allah — commanding rain, producing vegetation, and apparently raising the dead.</p>
+    <p>The scholars emphasised that these are not genuine miracles but trials permitted by Allah to test mankind. His powers are finite and imperfect — he cannot restore his own eye, and he cannot enter Makkah or Madinah. The recognition of the Dajjal is presented as a function of faith, not of learning: the believer will see what is written upon his forehead; the disbeliever will not.</p>
+    <p>The hadith of Tamim al-Dari, narrated in Sahih Muslim (no. 2942), provides a remarkable account of a chained figure on a remote island who identified himself as the Masih and indicated his imminent release. The Prophet <span class="salla" lang="ar">&#65018;</span> publicly endorsed this account, implying the Dajjal was already alive at that time, in some form of captivity, awaiting his appointed emergence.</p>
+    <h3>ʿIsa ibn Maryam (alayhi al-salam)</h3>
+    <p>ʿIsa descends at the white minaret to the east of Damascus, prays behind the Mahdi — a moment of extraordinary theological significance confirming that he returns as a follower of the Shariʿah of Muhammad <span class="salla" lang="ar">&#65018;</span> — and then pursues and kills the Dajjal at the gate of Ludd. The false Messiah is destroyed by the true Messiah: truth meets its counterfeit and annihilates it.</p>
+    <h3>Ya'juj and Ma'juj</h3>
+    <p>Mentioned in both Surah al-Kahf (Q. 18:83–98) and Surah al-Anbiya' (Q. 21:96–97), Ya'juj and Ma'juj are human beings of extraordinary number who will sweep across the earth after the defeat of the Dajjal. Even ʿIsa (alayhi al-salam) is commanded not to fight them but to withdraw with the believers to Mount Tur. Their destruction comes exclusively through Divine intervention — Allah sends a pestilence that destroys them overnight. The fact that no human agency defeats them reinforces the principle that ultimate sovereignty belongs to Allah alone.</p>
+
+    <h2>VII &middot; Decline, agency, and the reward of the strangers</h2>
+    <p>The broad eschatological arc described in the sources is one of deterioration. The hadith in al-Bukhari (no. 7068) records the Prophet <span class="salla" lang="ar">&#65018;</span> saying that no time comes except that what follows it is worse. The hadith in Muslim (no. 2671) describes how the religion began as something strange and will return to being strange. This distinguishes the Islamic eschatological vision sharply from post-Enlightenment notions of progressive human perfectibility.</p>
+    <p>Yet the scholars were emphatic that this does not constitute fatalism (jabriyyah). The Sunni position, as crystallised by al-Ashʿari and al-Maturidi, is that Allah creates all actions, but the human being acquires (kasb) them through genuine volition. The cosmic trajectory does not negate the moral significance of individual choices — it reframes them.</p>
+    <p>The hadith of the ghuraba' (the strangers) is pivotal. In Muslim (no. 145), the Prophet <span class="salla" lang="ar">&#65018;</span> said: 'Blessed are the strangers' — those who rectify what the people have corrupted. The very deterioration of the world is presented as the context within which a particular, exalted form of faith becomes possible. The believer in a time of widespread corruption who holds to the truth is attaining a spiritual rank that may equal or exceed that of earlier generations who practised under far easier circumstances.</p>
+    <p class="pullquote">Even the trajectory of decline, in the classical Sunni reading, is a setting within which an exalted form of faith becomes possible.</p>
+    <p>The framework separates, with great precision, the corporate trajectory of human civilisation — which is one of decline — from the individual moral career of each soul — which remains entirely open. No narration suggests that personal righteousness becomes impossible as the world deteriorates. It is a theology that refuses both naive optimism about human civilisation and despairing fatalism about the human person, locating the resolution not in this world but in the akhirah.</p>
+
+    <h2>VIII &middot; Divine mercy in calamitous death</h2>
+    <p>The classical sources identify many categories of untimely or unnatural death — disease, murder, drowning, fire, structural collapse, and others — as forms of martyrdom (shahadah) carrying specific rewards.</p>
+    <p>The foundational hadith in al-Bukhari (no. 2829) and Muslim (no. 1914) identifies five categories: the one who dies of plague, of abdominal disease, by drowning, by crushing beneath a structure, and in the path of Allah. Further narrations expand the categories to include death by fire, death in childbirth, and others. The hadith of Saʿid ibn Zayd in Abu Dawud (no. 4772) grants the status of martyrdom to anyone killed defending their property, life, family, or religion.</p>
+    <p>The scholars distinguished between the shahid al-dunya wa'l-akhirah (the battlefield martyr, who receives full martyrdom rulings in both worlds), the shahid al-akhirah (those who die of disease, accident, or murder — treated normally in worldly funeral rites but granted the reward of martyrdom before Allah), and the shahid al-dunya (one who falls in battle but with corrupt intention, receiving no eschatological reward).</p>
+    <p>The condition throughout is sabr — patience and acceptance of the Divine decree. The hadith in al-Bukhari (no. 5641) states that no fatigue, illness, or grief afflicts a Muslim except that Allah expiates some of his sins thereby. The hadith in al-Bukhari (no. 3474) on the plague specifies that the reward of martyrdom is granted to whoever remains patiently, expecting reward, knowing that nothing befalls him except what Allah has decreed. It is not the manner of death alone that makes the martyr; it is the combination of the calamity and the faith with which it is met.</p>
+    <p>The broader theological picture is one of extraordinary Divine generosity towards believers who suffer. Untimely death is not presented as punishment or a sign of Divine disfavour. It is reframed as an opportunity for purification, elevation, and the attainment of ranks that might otherwise have required far more arduous paths. The believer taken from this world through suffering has, as it were, been taken early from the examination hall — and awarded a pass.</p>
+
+    <h2>IX &middot; Conclusion: the architecture of mercy</h2>
+    <p>What emerges from this exploration is a vision of remarkable coherence. The world, in the Islamic understanding, is on a trajectory of decline — the sources are unambiguous about that. The sacred sites may be desecrated, the political order may crumble, and even the written text of the Qur'an will one day be lifted from the earth. The greatest trial in human history — the Dajjal — awaits, followed by the overwhelming tide of Ya'juj and Ma'juj, followed by a gentle wind that will remove the last believing soul from a world no longer worthy of faith.</p>
+    <p>And yet this is not a theology of despair. At every turn, the classical scholars identified within the trajectory of decline a corresponding intensification of Divine mercy towards the individual believer. The stranger who holds fast is blessed. The one who grasps the hot coal of faith in a time of corruption attains an exalted rank. The believer taken by disease, accident, or violence is granted martyrdom. The last believer on earth is spared the horror of the final Hour by a wind softer than silk.</p>
+    <p>The consistent thread is the classical Sunni insistence that Islam's foundations are not architectural, institutional, or even textual in the material sense. They are located in the relationship between the believing soul and its Creator. The outward apparatus — the Kaʿbah, the caliphate, the written mushaf — serves that relationship but does not constitute it. When the apparatus is removed, the relationship endures. When the world itself ends, the relationship endures still, carried into the akhirah where it finds its permanent fulfilment.</p>
+    <p>There is, one might observe, a certain profound mercy in that arrangement — a mercy that encompasses the entire span of human history, from its first breath to its last, and beyond.</p>
+
+    <section class="sources">
+      <h2>Principal Sources Referenced</h2>
+      <p>Qur'an: al-Baqarah (2:127, 2:155); Al Imran (3:45, 3:169–170); al-Anʿam (6:158); al-Hijr (15:9); al-Kahf (18:83–98); al-Anbiya' (21:96–97); al-Naml (27:82); al-Ankabut (29:2); al-Dukhan (44:10–11); al-Saff (61:2–3); al-Asr (103); al-Fil (105).</p>
+      <p>Hadith: Sahih al-Bukhari; Sahih Muslim; Sunan Abu Dawud; Sunan al-Tirmidhi; Sunan Ibn Majah; Sunan al-Nasa'i; Musnad Imam Ahmad.</p>
+      <p>Tafsir &amp; history: al-Tabari, <em>Jamiʿ al-Bayan</em> and <em>Tarikh al-Rusul wa'l-Muluk</em>; Ibn Kathir, <em>Tafsir al-Qur'an al-Azim</em>, <em>al-Bidayah wa'l-Nihayah</em>, and <em>al-Nihayah fi al-Fitan wa'l-Malahim</em>; al-Qurtubi, <em>al-Jamiʿ li Ahkam al-Qur'an</em> and <em>al-Tadhkirah</em>; al-Azraqi, <em>Akhbar Makkah</em>; Ibn al-Athir, <em>al-Kamil fi al-Tarikh</em>.</p>
+      <p>Aqidah: Ibn Taymiyyah, <em>Majmuʿ al-Fatawa</em> and <em>Minhaj al-Sunnah</em>; Ibn al-Qayyim, <em>Shifa' al-ʿAlil</em> and <em>Zad al-Maʿad</em>; al-Ghazali, <em>Ihya' Ulum al-Din</em>; al-Qadi Iyad, <em>al-Shifa'</em>.</p>
+      <p>Hadith commentary: Ibn Hajar al-Asqalani, <em>Fath al-Bari</em>; al-Nawawi, <em>Sharh Sahih Muslim</em>, <em>al-Majmuʿ</em>, and <em>Riyad al-Salihin</em>.</p>
+      <p>Heresiography &amp; geography: al-Baghdadi, <em>al-Farq bayn al-Firaq</em>; Ibn Hazm, <em>al-Fisal</em>; al-Muqaddasi, <em>Ahsan al-Taqasim</em>.</p>
+    </section>
+
+    <p class="note">This piece was compiled with the assistance of Claude (Anthropic) and represents classical Sunni positions to the best of the compiler's ability. It does not carry the authority of traditional scholarly transmission (isnad) and should be verified against primary sources and qualified scholars. Any errors are from the compiler; any benefit is from Allah alone.</p>
+
+    <div class="colophon">
+      <span class="orn">&#10038;</span>
+      The Bilal Papers &middot; The Quarterly Review &middot; 2026<br>
+      Set in Amiri
+    </div>
+
+  </article>
+</main>
+
+</body>
+</html>
