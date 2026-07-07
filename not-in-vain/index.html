@@ -1,1 +1,421 @@
-<>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Not in Vain &middot; The Bilal Papers</title>
+<meta name="description" content="On the Purpose of Creation and the Case for a Just God — an essay from The Quarterly Review, The Bilal Papers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF9F4;
+    --panel:#FFFDF9;
+    --ink:#1d1b19;
+    --ink-soft:#5a544c;
+    --house:#8B0000;
+    --hair:#DAD2C4;
+    --measure:44rem;
+    --display:'Helvetica Neue',Helvetica,Arial,'Segoe UI',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Amiri',Georgia,'Times New Roman',serif;
+    font-size:clamp(1.08rem,1.0rem + 0.5vw,1.24rem);
+    line-height:1.7;
+    text-rendering:optimizeLegibility;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---- Top bar / back to root ---- */
+  .topbar{max-width:var(--measure);margin:0 auto;padding:1.15rem 1.25rem .2rem}
+  .backlink{
+    font-family:var(--display);text-transform:uppercase;letter-spacing:.14em;
+    font-size:.62rem;font-weight:700;color:var(--house);text-decoration:none;
+    display:inline-block;
+  }
+  .backlink .arrow{display:inline-block;transition:transform .18s ease}
+  .backlink:hover .arrow,.backlink:focus-visible .arrow{transform:translateX(-3px)}
+  .backlink:focus-visible{outline:2px solid var(--house);outline-offset:3px}
+
+  /* ---- Masthead ---- */
+  .essay-head{border-bottom:1px solid var(--hair)}
+  .essay-head-inner{max-width:40rem;margin:0 auto;padding:1.6rem 1.5rem 2.6rem;text-align:center}
+  .eyebrow{font-family:var(--display);text-transform:uppercase;letter-spacing:.28em;font-size:.62rem;font-weight:700;color:var(--house);margin:0 0 1.1rem}
+  .essay-title{
+    font-family:var(--display);text-transform:uppercase;font-weight:700;
+    letter-spacing:.04em;line-height:1.04;
+    font-size:clamp(2rem,1.5rem + 2.6vw,3.1rem);color:var(--ink);margin:0 0 .8rem;
+  }
+  .essay-sub{font-style:italic;color:var(--ink-soft);font-size:1.08em;line-height:1.45;max-width:30rem;margin:0 auto 1rem}
+  .byline{font-family:var(--display);text-transform:uppercase;letter-spacing:.16em;font-size:.6rem;font-weight:700;color:var(--ink-soft)}
+  .orn{color:var(--house);font-size:1.2rem;line-height:1;margin:1.3rem 0 0}
+
+  /* ---- Body / measure ---- */
+  main{max-width:var(--measure);margin:0 auto;padding:2.2rem 1.25rem 1rem}
+  .standfirst{
+    font-style:italic;color:var(--ink-soft);
+    font-size:1.1em;line-height:1.6;margin:0 0 2.1rem;
+  }
+
+  /* ---- Accordion ---- */
+  .acc{
+    background:var(--panel);
+    border:1px solid var(--hair);
+    border-left:3px solid var(--house);
+    border-radius:2px;
+    margin:0 0 1rem;
+  }
+  .acc summary{
+    list-style:none;cursor:pointer;
+    padding:1.05rem 1.25rem;
+    font-family:var(--display);text-transform:uppercase;
+    letter-spacing:.1em;font-weight:700;font-size:.8rem;color:var(--ink);
+    display:flex;align-items:baseline;gap:.7rem;
+  }
+  .acc summary::-webkit-details-marker{display:none}
+  .acc summary::after{
+    content:'+';margin-left:auto;font-size:1.15rem;line-height:1;
+    color:var(--house);font-weight:400;align-self:center;
+  }
+  .acc[open] summary::after{content:'\2212'}
+  .acc summary:focus-visible{outline:2px solid var(--house);outline-offset:-2px}
+  .acc-num{color:var(--house);font-weight:700}
+  .acc-title{flex:1 1 auto}
+  .acc-body{padding:.2rem 1.25rem 1.5rem}
+  .acc-body p{margin:0 0 1.1rem;hyphens:auto}
+  .acc-body p:last-child{margin-bottom:0}
+
+  .dropcap{
+    float:left;font-family:'Amiri',serif;font-weight:700;color:var(--house);
+    font-size:3.2rem;line-height:.8;padding:.14rem .14rem 0 0;margin:.12rem .06rem 0 0;
+  }
+
+  /* ---- Scripture block ---- */
+  .scripture{
+    background:var(--paper);
+    border:1px solid var(--hair);
+    border-top:3px solid var(--house);
+    border-radius:2px;
+    padding:1.5rem 1.35rem;
+    margin:1.7rem 0;
+    text-align:center;
+  }
+  .scripture .ayah{
+    direction:rtl;font-family:'Amiri',serif;
+    font-size:1.62rem;line-height:2.15;color:var(--ink);margin:0 0 1rem;
+  }
+  .scripture .translit{font-style:italic;color:var(--ink-soft);font-size:.96em;line-height:1.5;margin:0 0 .8rem}
+  .scripture .translation{font-style:italic;color:var(--ink);line-height:1.55;margin:0 0 .95rem}
+  .scripture .ref{
+    font-family:var(--display);text-transform:uppercase;letter-spacing:.13em;
+    font-size:.6rem;font-weight:700;color:var(--house);margin:0;
+  }
+
+  /* ---- Pull quote ---- */
+  .pullquote{
+    font-family:'Amiri',serif;font-style:italic;color:var(--house);
+    font-size:1.24rem;line-height:1.5;text-align:center;
+    border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);
+    padding:1.1rem .4rem;margin:1.8rem 0;
+  }
+
+  /* ---- Honorific ligature ---- */
+  .salla{font-family:'Amiri','Traditional Arabic',serif;color:var(--house);font-size:1.08em;line-height:1}
+
+  /* ---- Key Takeaways ---- */
+  .block-takeaways .tk-intro{font-style:italic;color:var(--ink-soft);margin:0 0 1.2rem}
+  .block-takeaways ol{list-style:none;counter-reset:tk;padding:0;margin:0}
+  .block-takeaways li{
+    counter-increment:tk;position:relative;
+    padding:0 0 1rem 2.2rem;margin:0 0 1rem;border-bottom:1px solid var(--hair);
+  }
+  .block-takeaways li:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+  .block-takeaways li::before{
+    content:counter(tk);position:absolute;left:0;top:.05rem;
+    font-family:var(--display);font-weight:700;font-size:.72rem;color:var(--house);
+    border:1px solid var(--house);border-radius:50%;
+    width:1.5rem;height:1.5rem;display:flex;align-items:center;justify-content:center;
+  }
+  .tk-claim{font-family:var(--display);font-weight:700;color:var(--ink);font-size:.94em}
+
+  /* ---- References ---- */
+  .block-sources .acc-body{font-size:.94em;color:var(--ink-soft)}
+  .block-sources .acc-body p{margin:0 0 1rem}
+
+  /* ---- Foot ---- */
+  .backlink-foot{max-width:var(--measure);margin:0 auto;padding:1.6rem 1.25rem 0;text-align:center}
+  .colophon{
+    max-width:var(--measure);margin:0 auto;
+    padding:1.8rem 1.25rem 3.4rem;text-align:center;
+    font-family:var(--display);text-transform:uppercase;letter-spacing:.18em;
+    font-size:.6rem;color:var(--ink-soft);line-height:1.9;
+  }
+  .colophon a{color:inherit;text-decoration:none}
+  .colophon a:hover{text-decoration:underline}
+  .colophon .orn{display:block;font-size:1rem;letter-spacing:0;margin:0 0 .55rem}
+
+  @media (max-width:560px){
+    .essay-head-inner{padding:1.4rem 1.15rem 2.2rem}
+    main{padding:2rem 1.05rem 1rem}
+    .acc summary{padding:.95rem 1.1rem}
+    .acc-body{padding:.2rem 1.1rem 1.35rem}
+    .scripture{padding:1.3rem 1.05rem}
+    .scripture .ayah{font-size:1.46rem;line-height:2.05}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .backlink .arrow{transition:none}
+  }
+</style>
+</head>
+<body id="top">
+
+  <div class="topbar">
+    <a class="backlink" href="../"><span class="arrow">&larr;</span> The Bilal Papers</a>
+  </div>
+
+  <header class="essay-head">
+    <div class="essay-head-inner">
+      <p class="eyebrow">The Quarterly Review &middot; Issue 02</p>
+      <h1 class="essay-title">Not in Vain</h1>
+      <p class="essay-sub">On the Purpose of Creation and the Case for a Just God</p>
+      <p class="byline">By Claude Opus</p>
+      <div class="orn">&#10038;</div>
+    </div>
+  </header>
+
+  <main>
+
+    <p class="standfirst">When the young man declares that he cannot believe in a &ldquo;cruel God,&rdquo; he is often, without knowing it, refusing the right thing for the right reason. The God that classical Islam invites him to consider is a different proposition entirely &mdash; one whose argument unfolds first in the world he can already see, and then in the conscience he cannot help but listen to.</p>
+
+    <!-- I -->
+    <details class="acc" id="sec-1">
+      <summary><span class="acc-num">I</span><span class="acc-title">An Invitation to Reason</span></summary>
+      <div class="acc-body">
+        <p><span class="dropcap">A</span>mong educated men who left religion behind in the years between school and university, a recurring story is told. It rarely begins with cosmology and seldom with metaphysics. More often it begins with a picture &mdash; usually formed in childhood &mdash; of a deity who appears arbitrary, capricious, or cruel. The God who consigns unbaptised infants to limbo. The God who is appeased only by the suffering of His own son. The God who damns vast tracts of humanity for accidents of geography. The God who, in the most lurid renderings, hovers above His creation with a ledger in one hand and a fire in the other. At eighteen, one looks at this picture and concludes &mdash; quite reasonably, on the evidence as presented &mdash; that no decent person could love such a being, and that the most honest course is to deny His existence altogether.</p>
+        <p>The interesting fact about this story is that the classical Islamic tradition agrees with the eighteen-year-old. Not on the final conclusion that there is no God, of course, but on the prior and more important point: that the picture being rejected is not the picture of God at all. It is a malformed image, often the residue of partial doctrines, polemical preaching, or theological systems that, for historical reasons of their own, smuggled cruelty into a metaphysics that did not need it. A young man who refuses to bow to a cruel God may, paradoxically, be exercising the very faculty that the Qur&#700;&#257;n itself praises: the moral judgement that recoils from injustice. The work of theology &mdash; proper theology &mdash; is then not to demand that he silence that judgement and accept the picture anyway, but to show him that what he was rejecting was never the metaphysical claim. To borrow a phrase, he is not, in fact, an atheist. He is simply unwilling to be an idolater.</p>
+        <p>This essay sets out, plainly, what the classical Sunn&#299; tradition proposes instead. It does so on Islam&rsquo;s own terms, which means it begins not with appeals to authority or threats of consequence, but with an invitation to reason.</p>
+        <p>The Qur&#700;&#257;n is, perhaps surprisingly to anyone who has only ever heard of religious scripture as a vehicle for revealed dogma, a book that argues. It exhorts, it warns, it tells stories &mdash; but a striking proportion of its 6,236 verses are devoted to inviting the reader to reflect, observe, and conclude for himself. The refrains <em>afal&#257; ta&#703;qil&#363;n</em> (&ldquo;do you not reason?&rdquo;), <em>afal&#257; tatafakkar&#363;n</em> (&ldquo;do you not reflect?&rdquo;), and <em>afal&#257; yatadabbar&#363;n</em> (&ldquo;do they not contemplate?&rdquo;) run through the text like a litany, addressed not only to believers but to sceptics, to opponents, and to the indifferent.</p>
+        <p>The reader who supposes that this is a matter of arid philosophising will be brought up short by the fact that the Qur&#700;&#257;n often phrases the invitation in terms of the plainest available observation. Late in the book, in a short and arresting chapter, the question is put like this:</p>
+
+        <div class="scripture">
+          <p class="ayah" lang="ar" dir="rtl">&#1571;&#1614;&#1601;&#1614;&#1604;&#1575; &#1610;&#1614;&#1606;&#1592;&#1615;&#1585;&#1615;&#1608;&#1606;&#1614; &#1573;&#1616;&#1604;&#1614;&#1609; &#1575;&#1604;&#1618;&#1573;&#1616;&#1576;&#1616;&#1604;&#1616; &#1603;&#1614;&#1610;&#1618;&#1601;&#1614; &#1582;&#1615;&#1604;&#1616;&#1602;&#1614;&#1578;&#1618; &#64831;&#1633;&#1639;&#64830; &#1608;&#1614;&#1573;&#1616;&#1604;&#1614;&#1609; &#1575;&#1604;&#1587;&#1617;&#1614;&#1605;&#1614;&#1575;&#1569;&#1616; &#1603;&#1614;&#1610;&#1618;&#1601;&#1614; &#1585;&#1615;&#1601;&#1616;&#1593;&#1614;&#1578;&#1618; &#64831;&#1633;&#1640;&#64830; &#1608;&#1614;&#1573;&#1616;&#1604;&#1614;&#1609; &#1575;&#1604;&#1618;&#1580;&#1616;&#1576;&#1614;&#1575;&#1604;&#1616; &#1603;&#1614;&#1610;&#1618;&#1601;&#1614; &#1606;&#1615;&#1589;&#1616;&#1576;&#1614;&#1578;&#1618; &#64831;&#1633;&#1641;&#64830; &#1608;&#1614;&#1573;&#1616;&#1604;&#1614;&#1609; &#1575;&#1604;&#1618;&#1571;&#1614;&#1585;&#1618;&#1590;&#1616; &#1603;&#1614;&#1610;&#1618;&#1601;&#1614; &#1587;&#1615;&#1591;&#1616;&#1581;&#1614;&#1578;&#1618; &#64831;&#1634;&#1632;&#64830;</p>
+          <p class="translation">&ldquo;Do they not look at the camels &mdash; how they are created? And at the sky &mdash; how it is raised up? And at the mountains &mdash; how they are anchored? And at the earth &mdash; how it is spread out?&rdquo;</p>
+          <p class="ref">Qur&#700;&#257;n &middot; S&#363;rat al-Gh&#257;shiya &middot; 88:17&ndash;20</p>
+        </div>
+
+        <p>The verses are not technical. They are an injunction to look. The camel walking past in the desert, the sky above the looker, the mountains stable in the middle distance, the earth beneath the feet &mdash; these are presented not as evidence in a metaphysical argument already settled, but as objects of unforced attention. The Qur&#700;&#257;n is confident that anyone who looks honestly and long enough will find the looking itself sufficient. The demand it makes of the sceptic is, in this register, the most modest possible: not to assent to any doctrine, but to refuse the temptation to look away.</p>
+        <p>That this is not a marginal note becomes clear when one considers the passages in which the case for belief is most explicitly made. A locus classicus is the closing of S&#363;rat &#256;l &#703;Imr&#257;n:</p>
+
+        <div class="scripture">
+          <p class="ayah" lang="ar" dir="rtl">&#1573;&#1616;&#1606;&#1617;&#1614; &#1601;&#1616;&#1610; &#1582;&#1614;&#1604;&#1618;&#1602;&#1616; &#1575;&#1604;&#1587;&#1617;&#1614;&#1605;&#1614;&#1575;&#1608;&#1614;&#1575;&#1578;&#1616; &#1608;&#1614;&#1575;&#1604;&#1618;&#1571;&#1614;&#1585;&#1618;&#1590;&#1616; &#1608;&#1614;&#1575;&#1582;&#1618;&#1578;&#1616;&#1604;&#1614;&#1575;&#1601;&#1616; &#1575;&#1604;&#1604;&#1617;&#1614;&#1610;&#1618;&#1604;&#1616; &#1608;&#1614;&#1575;&#1604;&#1606;&#1617;&#1614;&#1607;&#1614;&#1575;&#1585;&#1616; &#1604;&#1614;&#1570;&#1610;&#1614;&#1575;&#1578;&#1613; &#1604;&#1616;&#1571;&#1615;&#1608;&#1604;&#1616;&#1610; &#1575;&#1604;&#1618;&#1571;&#1614;&#1604;&#1618;&#1576;&#1614;&#1575;&#1576;&#1616; &#64831;&#1633;&#1641;&#1632;&#64830; &#1575;&#1604;&#1617;&#1614;&#1584;&#1616;&#1610;&#1606;&#1614; &#1610;&#1614;&#1584;&#1618;&#1603;&#1615;&#1585;&#1615;&#1608;&#1606;&#1614; &#1575;&#1604;&#1604;&#1617;&#1614;&#1607;&#1614; &#1602;&#1616;&#1610;&#1614;&#1575;&#1605;&#1611;&#1575; &#1608;&#1614;&#1602;&#1615;&#1593;&#1615;&#1608;&#1583;&#1611;&#1575; &#1608;&#1614;&#1593;&#1614;&#1604;&#1614;&#1609;&#1648; &#1580;&#1615;&#1606;&#1615;&#1608;&#1576;&#1616;&#1607;&#1616;&#1605;&#1618; &#1608;&#1614;&#1610;&#1614;&#1578;&#1614;&#1601;&#1614;&#1603;&#1617;&#1614;&#1585;&#1615;&#1608;&#1606;&#1614; &#1601;&#1616;&#1610; &#1582;&#1614;&#1604;&#1618;&#1602;&#1616; &#1575;&#1604;&#1587;&#1617;&#1614;&#1605;&#1614;&#1575;&#1608;&#1614;&#1575;&#1578;&#1616; &#1608;&#1614;&#1575;&#1604;&#1618;&#1571;&#1614;&#1585;&#1618;&#1590;&#1616; &#1585;&#1614;&#1576;&#1617;&#1614;&#1606;&#1614;&#1575; &#1605;&#1614;&#1575; &#1582;&#1614;&#1604;&#1614;&#1602;&#1618;&#1578;&#1614; &#1607;&#1614;&#1648;&#1584;&#1614;&#1575; &#1576;&#1614;&#1575;&#1591;&#1616;&#1604;&#1611;&#1575; &#1587;&#1615;&#1576;&#1618;&#1581;&#1614;&#1575;&#1606;&#1614;&#1603;&#1614; &#1601;&#1614;&#1602;&#1616;&#1606;&#1614;&#1575; &#1593;&#1614;&#1584;&#1614;&#1575;&#1576;&#1614; &#1575;&#1604;&#1606;&#1617;&#1614;&#1575;&#1585;&#1616; &#64831;&#1633;&#1641;&#1633;&#64830;</p>
+          <p class="translit">Inna f&#299; khalqi &rsquo;l-sam&#257;w&#257;ti wa &rsquo;l-ar&#7693;i wa-khtil&#257;fi &rsquo;l-layli wa &rsquo;l-nah&#257;ri la-&#257;y&#257;tin li-ul&#299; &rsquo;l-alb&#257;b &hellip;</p>
+          <p class="translation">&ldquo;Indeed, in the creation of the heavens and the earth, and the alternation of night and day, there are signs for those of understanding &mdash; those who remember God standing, sitting, and lying on their sides, and who contemplate the creation of the heavens and the earth, saying: Our Lord, You did not create this in vain. Glory be to You; protect us from the punishment of the Fire.&rdquo;</p>
+          <p class="ref">Qur&#700;&#257;n &middot; S&#363;rat &#256;l &#703;Imr&#257;n &middot; 3:190&ndash;191</p>
+        </div>
+
+        <p>The verse is structurally telling. Reflection on the natural order is not posed as a pious supplement to faith already held; it is presented as the route by which faith is reached. The contemplation precedes the cry of recognition. The conclusion &mdash; that creation cannot be in vain &mdash; is offered as something any honest observer of the cosmos may arrive at by careful looking, and then verify against the deepest movements of the heart.</p>
+        <p>This is not, in the classical tradition, a rhetorical theme alone. The great Muslim theologians and philosophers &mdash; al-Ghaz&#257;l&#299;, al-M&#257;tur&#299;d&#299;, al-Ash&#703;ar&#299;, al-R&#257;z&#299;, Ibn S&#299;n&#257; and others &mdash; built elaborate rational arguments for the existence and unity of God. Their disagreements with each other were sharp, sometimes ferocious. But they shared the assumption that the truth of the proposition &ldquo;God exists&rdquo; was something to be argued for, not merely asserted. The Qur&#700;&#257;nic insistence on <em>&#703;aql</em> (intellect) as the faculty by which God is known is not, in Islam, a concession to philosophy. It is the foundation on which the rest of the edifice rests.</p>
+
+        <p class="pullquote">The work of theology is not to demand the young man silence his moral judgement and accept the picture anyway, but to show him that what he is rejecting was never the metaphysical claim.</p>
+
+        <p>For the young man who has stepped back from inherited belief, this matters greatly. Islam does not ask him to abandon the faculty by which he made his stand. It asks him to use it more thoroughly.</p>
+      </div>
+    </details>
+
+    <!-- II -->
+    <details class="acc" id="sec-2">
+      <summary><span class="acc-num">II</span><span class="acc-title">The Reasoning of Abraham</span></summary>
+      <div class="acc-body">
+        <p>The Qur&#700;&#257;n offers, within its own narrative material, a particularly fine model of what this reasoning looks like in practice. The patriarch Ibr&#257;h&#299;m &mdash; Abraham, in the Latin form, the shared father of the three Abrahamic religions &mdash; is shown in S&#363;rat al-An&#703;&#257;m observing the heavens and reasoning his way through to the Necessary Being:</p>
+
+        <div class="scripture">
+          <p class="ayah" lang="ar" dir="rtl">&#1608;&#1614;&#1603;&#1614;&#1584;&#1614;&#1648;&#1604;&#1616;&#1603;&#1614; &#1606;&#1615;&#1585;&#1616;&#1610; &#1573;&#1616;&#1576;&#1618;&#1585;&#1614;&#1575;&#1607;&#1616;&#1610;&#1605;&#1614; &#1605;&#1614;&#1604;&#1614;&#1603;&#1615;&#1608;&#1578;&#1614; &#1575;&#1604;&#1587;&#1617;&#1614;&#1605;&#1614;&#1575;&#1608;&#1614;&#1575;&#1578;&#1616; &#1608;&#1614;&#1575;&#1604;&#1618;&#1571;&#1614;&#1585;&#1618;&#1590;&#1616; &#1608;&#1614;&#1604;&#1616;&#1610;&#1614;&#1603;&#1615;&#1608;&#1606;&#1614; &#1605;&#1616;&#1606;&#1614; &#1575;&#1604;&#1618;&#1605;&#1615;&#1608;&#1602;&#1616;&#1606;&#1616;&#1610;&#1606;&#1614; &#64831;&#1639;&#1637;&#64830; &#1601;&#1614;&#1604;&#1614;&#1605;&#1617;&#1614;&#1575; &#1580;&#1614;&#1606;&#1617;&#1614; &#1593;&#1614;&#1604;&#1614;&#1610;&#1618;&#1607;&#1616; &#1575;&#1604;&#1604;&#1617;&#1614;&#1610;&#1618;&#1604;&#1615; &#1585;&#1614;&#1571;&#1614;&#1609;&#1648; &#1603;&#1614;&#1608;&#1618;&#1603;&#1614;&#1576;&#1611;&#1575; &#1602;&#1614;&#1575;&#1604;&#1614; &#1607;&#1614;&#1648;&#1584;&#1614;&#1575; &#1585;&#1614;&#1576;&#1617;&#1616;&#1610; &#1601;&#1614;&#1604;&#1614;&#1605;&#1617;&#1614;&#1575; &#1571;&#1614;&#1601;&#1614;&#1604;&#1614; &#1602;&#1614;&#1575;&#1604;&#1614; &#1604;&#1614;&#1575; &#1571;&#1615;&#1581;&#1616;&#1576;&#1617;&#1615; &#1575;&#1604;&#1618;&#1570;&#1601;&#1616;&#1604;&#1616;&#1610;&#1606;&#1614; &#64831;&#1639;&#1638;&#64830;</p>
+          <p class="translation">&ldquo;And thus did We show Abraham the dominions of the heavens and the earth, so that he might be among those of certainty. When the night came upon him, he saw a star, and said: This is my Lord. When it set, he said: I do not love things that set.&rdquo; He then sees the moon, and the sun, in turn, and reaches the same conclusion of each &mdash; until at last he says: &ldquo;I have turned my face toward Him who created the heavens and the earth, inclining to truth, and I am not of those who associate others with Him.&rdquo;</p>
+          <p class="ref">Qur&#700;&#257;n &middot; S&#363;rat al-An&#703;&#257;m &middot; 6:75&ndash;79 (abridged)</p>
+        </div>
+
+        <p>The passage is a small philosophical drama. Abraham is shown, step by step, working his way from the brightest objects available to his observation to the conclusion that none of them can be the ultimate Reality. His reasoning is not deductive in the manner of a syllogism. It is closer to what a modern philosopher would call a transcendental argument: a movement from a feature of the observed (transience, dependence on conditions) to a conclusion about what must lie beyond it (permanence, self-sufficiency). The clinching insight &mdash; <em>l&#257; u&#7717;ibbu &rsquo;l-&#257;fil&#299;n</em>, &ldquo;I do not love things that set&rdquo; &mdash; is at once aesthetic, moral, and metaphysical. The Necessary Being is the only fitting object of an infinite love, because it alone does not pass away.</p>
+        <p>What is striking about the way the Qur&#700;&#257;n tells this story is that Abraham is not given the conclusion. He arrives at it. The revelation that follows the patriarchs and the prophets is, in the Qur&#700;&#257;nic frame, the confirmation and completion of an enquiry that the human mind, properly used, is already capable of beginning. The eighteen-year-old who rejected the picture of a cruel God did the first half of Abraham&rsquo;s work; the rest of the journey is open to him.</p>
+      </div>
+    </details>
+
+    <!-- III -->
+    <details class="acc" id="sec-3">
+      <summary><span class="acc-num">III</span><span class="acc-title">From the World to the One Who Made It</span></summary>
+      <div class="acc-body">
+        <p>What, then, does that thorough use of reason suggest? The classical <em>kal&#257;m</em> argument, in its most compressed form, runs as follows. The universe &mdash; meaning the totality of contingent things, the things that began to exist and need not have existed &mdash; is not self-explanatory. Every contingent thing requires, for its existence, a cause beyond itself. A chain of contingent causes cannot extend infinitely backward in the actual past without the whole chain remaining unexplained. There must therefore exist a non-contingent ground &mdash; a Necessary Being whose existence is owed to nothing outside itself. This, in the Islamic vocabulary, is what is meant by <em>All&#257;h</em>: not a being among beings, but Being itself, in whose continued willing the cosmos at every instant subsists.</p>
+        <p>The argument is, in outline, the one elaborated most famously by Ibn S&#299;n&#257; as the <em>burh&#257;n al-&#7779;idd&#299;q&#299;n</em>, the proof of the truthful, and refined by every subsequent school. It is the same family of argument that, in Western Christian thought, descends through Aquinas&rsquo;s Five Ways. Whatever else one says about it, one cannot say that it is unreasonable to entertain. It is the most natural conclusion from the simplest observation: that the world is, but might not have been.</p>
+        <p>The Qur&#700;&#257;n itself anticipates the move from observation to inference in a verse that asks the question directly:</p>
+
+        <div class="scripture">
+          <p class="ayah" lang="ar" dir="rtl">&#1608;&#1614;&#1605;&#1614;&#1575; &#1582;&#1614;&#1604;&#1614;&#1602;&#1618;&#1606;&#1614;&#1575; &#1575;&#1604;&#1587;&#1617;&#1614;&#1605;&#1614;&#1575;&#1569;&#1614; &#1608;&#1614;&#1575;&#1604;&#1618;&#1571;&#1614;&#1585;&#1618;&#1590;&#1614; &#1608;&#1614;&#1605;&#1614;&#1575; &#1576;&#1614;&#1610;&#1618;&#1606;&#1614;&#1607;&#1615;&#1605;&#1614;&#1575; &#1576;&#1614;&#1575;&#1591;&#1616;&#1604;&#1611;&#1575; &#1584;&#1614;&#1648;&#1604;&#1616;&#1603;&#1614; &#1592;&#1614;&#1606;&#1617;&#1615; &#1575;&#1604;&#1617;&#1614;&#1584;&#1616;&#1610;&#1606;&#1614; &#1603;&#1614;&#1601;&#1614;&#1585;&#1615;&#1608;&#1575; &#1601;&#1614;&#1608;&#1614;&#1610;&#1618;&#1604;&#1612; &#1604;&#1616;&#1604;&#1617;&#1614;&#1584;&#1616;&#1610;&#1606;&#1614; &#1603;&#1614;&#1601;&#1614;&#1585;&#1615;&#1608;&#1575; &#1605;&#1616;&#1606;&#1614; &#1575;&#1604;&#1606;&#1617;&#1614;&#1575;&#1585;&#1616; &#64831;&#1634;&#1639;&#64830;</p>
+          <p class="translation">&ldquo;And We did not create the heaven and the earth, and what is between them, in vain. That is the supposition of those who disbelieve. So woe to those who disbelieve, from the Fire.&rdquo;</p>
+          <p class="ref">Qur&#700;&#257;n &middot; S&#363;rat &#7778;&#257;d &middot; 38:27</p>
+        </div>
+
+        <p>The Qur&#700;&#257;nic claim is therefore double. First, that the universe exists by virtue of a Necessary Cause. Second, that this Cause acts with purpose rather than caprice. The proposition is offered as a wager about which view of the cosmos is the more rationally elegant: the universe as the meaningless precipitate of nothing, indifferent to its inhabitants and to itself; or the universe as the ordered work of a wise Maker. The Qur&#700;&#257;n is not embarrassed to advance the second. Indeed it goes further, suggesting that the first view is itself a <em>&#7827;ann</em> &mdash; a conjecture, an unfounded supposition &mdash; rather than a conclusion compelled by the evidence.</p>
+        <p>This is a strong claim, and the modern reader is entitled to test it. One way of doing so is to consider what kind of cosmos one would expect on each hypothesis. On the hypothesis of unguided process, one would expect a universe indifferent to mind, alien to value, and silent on the question of meaning. On the hypothesis of purposeful creation, one would expect a universe in which intelligibility, beauty, moral seriousness, and the capacity for love and sacrifice are not anomalies but features of the architecture. The honest observer is invited to say which of the two pictures more nearly resembles the universe he actually inhabits.</p>
+      </div>
+    </details>
+
+    <!-- IV -->
+    <details class="acc" id="sec-4">
+      <summary><span class="acc-num">IV</span><span class="acc-title">What Kind of God?</span></summary>
+      <div class="acc-body">
+        <p>Granted the metaphysical conclusion, the more interesting question is what follows about the character of this Maker. Here the Islamic doctrine of <em>taw&#7717;&#299;d</em> &mdash; the absolute unity and uniqueness of God &mdash; does its principal work. The Necessary Being is, by the nature of the case, one. It has no partners, no rivals, no offspring, no peers. It is not, contra the deities of the ancient world, a localised tribal force, nor is it the projection of any human attribute writ large.</p>
+        <p>The Qur&#700;&#257;n is intensely careful about <em>tanz&#299;h</em>, the principle of declaring God free from any deficiency or any resemblance to created things. <em>Laysa ka-mithlihi shay&#702;</em> &mdash; &ldquo;there is nothing like unto Him&rdquo; (Q 42:11) &mdash; is the regulating clause of all subsequent God-talk. Whatever positive attributes the tradition affirms &mdash; knowledge, power, will, mercy, justice &mdash; they are affirmed without anthropomorphic content. God knows, but not as we know; He wills, but not as we will; He acts in time without Himself being temporal.</p>
+        <p>This matters more than it may first appear. Many of the difficulties that have driven thoughtful people to atheism are, on inspection, difficulties about a God conceived too anthropomorphically &mdash; a God who sulks, retaliates, plays favourites, requires placation, or trades in transactional exchanges. The God of <em>taw&#7717;&#299;d</em> is not that figure. He is beyond the categories that make those difficulties intelligible in the first place.</p>
+
+        <p class="pullquote">The Qur&#700;&#257;nic insistence on &#703;aql &mdash; intellect &mdash; as the faculty by which God is known is not, in Islam, a concession to philosophy. It is the foundation on which the rest of the edifice rests.</p>
+
+        <p>It is here that the reader may notice, without my needing to insist upon it, a meaningful difference between the classical Islamic doctrine of God and certain currents in the Christian theology within which the rejecting eighteen-year-old may have been raised. Where Augustinian Western Christianity postulates an inherited guilt borne by every human soul from birth &mdash; <em>peccatum originale</em>, original sin &mdash; the Qur&#700;&#257;nic anthropology contains no such doctrine. Where Christian atonement theology centres on the propitiation of divine displeasure through the sacrificial death of the Son, the Qur&#700;&#257;n holds that God forgives directly, without intermediary, without ransom, and without blood. The verse is unambiguous: <em>wa l&#257; taziru w&#257;ziratun wizra ukhr&#257;</em> &mdash; &ldquo;no bearer of burdens shall bear the burden of another&rdquo; (Q 35:18). The young man who could not bear the idea that an infant comes into the world already condemned will find that, in the Islamic account, no infant ever has.</p>
+      </div>
+    </details>
+
+    <!-- V -->
+    <details class="acc" id="sec-5">
+      <summary><span class="acc-num">V</span><span class="acc-title">Mercy First</span></summary>
+      <div class="acc-body">
+        <p>If one were obliged to name a single attribute as the operating principle of God in classical Islamic theology, the orthodox answer would not be power, not wrath, not even justice in its narrow sense. It is mercy. The Qur&#700;&#257;n opens, in 113 of its 114 chapters, with the formula <em>bismi &rsquo;Ll&#257;hi &rsquo;l-Ra&#7717;m&#257;ni &rsquo;l-Ra&#7717;&#299;m</em> &mdash; in the name of God, the Most Compassionate, the Most Merciful. The two names share a root, <em>r-&#7717;-m</em>, with the Arabic word for the womb (<em>ra&#7717;im</em>). The metaphysical first principle is the unconditional and prior love by which existence is given at all.</p>
+        <p>In a <em>&#7717;ad&#299;th quds&#299;</em> &mdash; a saying transmitted by the Prophet Mu&#7717;ammad <span class="salla" lang="ar">&#65018;</span> in which God speaks in the first person &mdash; recorded by both al-Bukh&#257;r&#299; (no. 7404) and Muslim (no. 2751), and thus among the most rigorously authenticated reports in the Sunn&#299; canon, God says: <em>inna ra&#7717;mat&#299; sabaqat gha&#7693;ab&#299;</em>, &ldquo;indeed, My mercy precedes (or overtakes) My wrath.&rdquo; The verb <em>sabaqa</em> carries the force of priority both in time and in nature. Mercy is not a concession granted occasionally against the grain of divine character. It is the grain itself. Wrath is the exception, conditioned by injustice, and even then circumscribed by mercy.</p>
+        <p>The implication for the doctrine of God is profound. The world does not exist on sufferance, lent reluctantly to creatures who must work to deserve continued existence. It exists because God, freely and graciously, willed it to. Each breath, each moment of consciousness, each capacity for thought and love and grief is, in the classical view, a sustained act of <em>ra&#7717;ma</em>. To exist at all is already to be the recipient of an immense and prior generosity. The 99 names by which Muslims address God begin with the two names of mercy, and the names of severity, when they appear, are always counterbalanced by an act of pardon.</p>
+        <p>This is also the answer to a question often raised by readers of devotional texts. If God is omnipotent, why does He need to be worshipped, glorified, praised? The classical answer is that He does not need any of it. Worship is for the benefit of the worshipper, not the worshipped. It is the orientation of a creature toward the source of its being, by which the creature is corrected, calmed, refined, and aligned. A God who needed praise would be a diminished God; the God of <em>taw&#7717;&#299;d</em> is the one who needs nothing because He is the source of everything that is.</p>
+      </div>
+    </details>
+
+    <!-- VI -->
+    <details class="acc" id="sec-6">
+      <summary><span class="acc-num">VI</span><span class="acc-title">Why, Then, Suffering?</span></summary>
+      <div class="acc-body">
+        <p>This is the place where the question presses hardest, and where any honest theology must speak carefully. If God is one, wise, and merciful, why does the world contain the suffering it does? Why innocent children dying of cancer? Why earthquake and famine? Why the long, slow, accumulated cruelties of history? Ivan Karamazov&rsquo;s rebellion in Dostoevsky &mdash; that he would return his ticket to a universe in which a single tear of an innocent child is the price of admission &mdash; is the version most familiar to modern readers. It is also a serious question. It deserves a serious answer.</p>
+        <p>The Islamic answer is not, and has never been, that suffering is illusion, or that it is the discipline of an angry parent, or that it is the just consequence of an inherited stain. The Qur&#700;&#257;n insists, again and again, that the present world is <em>d&#257;r al-imti&#7717;&#257;n</em> &mdash; the abode of trial. It is not the abode of final reward, nor the abode of final punishment. It exists in time, and it exists in test. Its purpose is not to be the place where every account is settled. It is the place where the moral capacity of free creatures is exercised under conditions in which virtue is genuinely possible.</p>
+
+        <div class="scripture">
+          <p class="ayah" lang="ar" dir="rtl">&#1575;&#1604;&#1617;&#1614;&#1584;&#1616;&#1610; &#1582;&#1614;&#1604;&#1614;&#1602;&#1614; &#1575;&#1604;&#1618;&#1605;&#1614;&#1608;&#1618;&#1578;&#1614; &#1608;&#1614;&#1575;&#1604;&#1618;&#1581;&#1614;&#1610;&#1614;&#1575;&#1577;&#1614; &#1604;&#1616;&#1610;&#1614;&#1576;&#1618;&#1604;&#1615;&#1608;&#1614;&#1603;&#1615;&#1605;&#1618; &#1571;&#1614;&#1610;&#1617;&#1615;&#1603;&#1615;&#1605;&#1618; &#1571;&#1614;&#1581;&#1618;&#1587;&#1614;&#1606;&#1615; &#1593;&#1614;&#1605;&#1614;&#1604;&#1611;&#1575; &#1608;&#1614;&#1607;&#1615;&#1608;&#1614; &#1575;&#1604;&#1618;&#1593;&#1614;&#1586;&#1616;&#1610;&#1586;&#1615; &#1575;&#1604;&#1618;&#1594;&#1614;&#1601;&#1615;&#1608;&#1585;&#1615; &#64831;&#1634;&#64830;</p>
+          <p class="translation">&ldquo;He who created death and life to test you, as to which of you is best in deed &mdash; and He is the Mighty, the Forgiving.&rdquo;</p>
+          <p class="ref">Qur&#700;&#257;n &middot; S&#363;rat al-Mulk &middot; 67:2</p>
+        </div>
+
+        <p>Suffering, in this framework, is <em>bal&#257;&#702;</em> &mdash; trial. It is not punishment for ancestral sin. It is the condition of a world in which moral agents can act freely, can wrong each other, can rise to compassion, can be refined by hardship. A world without the possibility of suffering would be a world without the possibility of courage, patience, sacrifice, generosity toward the weak, or steadfastness in adversity. None of these goods would exist in a paradise that came without cost.</p>
+        <p>A <em>&#7717;ad&#299;th</em> narrated by al-Tirmidh&#299; (no. 2398, graded <em>&#7717;asan &#7779;a&#7717;&#299;&#7717;</em>), Ibn M&#257;jah, and A&#7717;mad reports the Prophet <span class="salla" lang="ar">&#65018;</span> as saying that the most severely tested of people are the prophets, then those who are next in rank, then those who are next. Trial, in the classical view, is correlated with proximity to God rather than with His distance from the sufferer. To be tested is not to be abandoned. It is, frequently, to be entrusted with weight.</p>
+
+        <p class="pullquote">To be tested is not to be abandoned. It is, frequently, to be entrusted with weight.</p>
+
+        <p>Classical theologians, working through the centuries to refine this answer, distinguished several functions that suffering can serve in a wise providence. Al-Ghaz&#257;l&#299;, in his <em>I&#7717;y&#257;&#702; &#703;Ul&#363;m al-D&#299;n</em>, enumerates them: trial as expiation (<em>kaff&#257;ra</em>) for past wrong; trial as elevation (<em>raf&#703; al-daraj&#257;t</em>) for the righteous; trial as discipline (<em>ta&#702;d&#299;b</em>) for the heedless; trial as the means by which a soul acquires goods &mdash; patience, courage, compassion, trust &mdash; that cannot be acquired by easier paths. Not every instance of suffering need be classifiable under one of these alone. The classical position is humbler than that: the wisdom (<em>&#7717;ikma</em>) of God in any particular case is not always given to us to know, and that this is itself part of the test.</p>
+        <p>A <em>&#7717;ad&#299;th</em> narrated by Muslim in his <em>&#7778;a&#7717;&#299;&#7717;</em> (no. 2999) gives the principle in epigrammatic form. The Prophet <span class="salla" lang="ar">&#65018;</span> said: <em>&#703;ajaban li-amri &rsquo;l-mu&rsquo;min, inna amrahu kullahu khayr</em> &mdash; &ldquo;wonderful is the affair of the believer; his affair is all good. If something joyful befalls him, he gives thanks, and that is good for him; and if something painful afflicts him, he is patient, and that too is good for him.&rdquo; The implication is not that suffering is itself a good. It is that, for a soul rightly oriented, suffering can be converted into a good. The world is not arranged so that no one will be tested. It is arranged so that no test, accepted, will be wasted.</p>
+        <p>This does not &ldquo;solve&rdquo; the problem of evil in the sense of making any individual suffering less painful. It does, however, locate suffering within a framework in which it has meaning, and in which its imbalances are not the final word. To which we now turn.</p>
+      </div>
+    </details>
+
+    <!-- VII -->
+    <details class="acc" id="sec-7">
+      <summary><span class="acc-num">VII</span><span class="acc-title">The Account Completed</span></summary>
+      <div class="acc-body">
+        <p>If this world were all there was, Ivan Karamazov&rsquo;s protest would stand. The tortured child whose torturer was never punished; the saintly woman who died young; the tyrant who lived rich and comfortable and was lamented at his funeral &mdash; such cases would constitute a permanent indictment of any claim that the universe is just. The Islamic answer is that this world is not all there is.</p>
+
+        <div class="scripture">
+          <p class="ayah" lang="ar" dir="rtl">&#1571;&#1614;&#1601;&#1614;&#1581;&#1614;&#1587;&#1616;&#1576;&#1618;&#1578;&#1615;&#1605;&#1618; &#1571;&#1614;&#1606;&#1617;&#1614;&#1605;&#1614;&#1575; &#1582;&#1614;&#1604;&#1614;&#1602;&#1618;&#1606;&#1614;&#1575;&#1603;&#1615;&#1605;&#1618; &#1593;&#1614;&#1576;&#1614;&#1579;&#1611;&#1575; &#1608;&#1614;&#1571;&#1614;&#1606;&#1617;&#1614;&#1603;&#1615;&#1605;&#1618; &#1573;&#1616;&#1604;&#1614;&#1610;&#1618;&#1606;&#1614;&#1575; &#1604;&#1614;&#1575; &#1578;&#1615;&#1585;&#1618;&#1580;&#1614;&#1593;&#1615;&#1608;&#1606;&#1614; &#64831;&#1633;&#1633;&#1637;&#64830;</p>
+          <p class="translation">&ldquo;Did you suppose, then, that We created you in vain, and that to Us you would not be returned?&rdquo;</p>
+          <p class="ref">Qur&#700;&#257;n &middot; S&#363;rat al-Mu&#702;min&#363;n &middot; 23:115</p>
+        </div>
+
+        <p>The verse is rhetorical, but the question it poses is metaphysically serious. If creation is purposeful &mdash; if it was not made in vain &mdash; then it must come to an accounting. Otherwise the purpose is unfulfilled and the original supposition collapses. The classical doctrine of the <em>&#257;khira</em>, the hereafter, is not an exotic add-on to Islamic theology. It is the logical completion of the doctrine of purposeful creation. A wise God who has created in truth, and not in jest, will not leave the moral accounts of the world unsettled.</p>
+        <p>This is not, it must be stressed, a doctrine of grim consolation. The Islamic <em>&#257;khira</em> is asymmetric. The capacity of God&rsquo;s mercy is vast &mdash; vastly greater than His wrath, by the prior principle. The Qur&#700;&#257;n insists that no soul will be wronged by the weight of an atom (Q 4:40; 99:7&ndash;8). Every kindness will be honoured; every injustice will be answered; every silent suffering will be vindicated. The young man who could not bear the idea of a God who closed His eyes to the suffering of children will find that the God of the Qur&#700;&#257;n is precisely the God who refuses to close His eyes &mdash; and who has both the capacity and the will to make every wrong right, in a final reckoning whose terms are mercy first.</p>
+        <p>The asymmetry is worth dwelling on, because it bears directly on Craig&rsquo;s objection. In a tradition that holds the divine mercy to be ontologically prior to the divine wrath, the default expectation is not damnation. It is forgiveness. The Qur&#700;&#257;n is full of verses in which God describes Himself as eager to pardon: <em>nabbi&#702; &#703;ib&#257;d&#299; ann&#299; an&#257; &rsquo;l-Ghaf&#363;ru &rsquo;l-Ra&#7717;&#299;m</em> &mdash; &ldquo;inform My servants that I am the Forgiving, the Merciful&rdquo; (Q 15:49). Punishment exists, because justice requires it; but it is the last resort of a Reality whose first instinct is to give.</p>
+      </div>
+    </details>
+
+    <!-- VIII -->
+    <details class="acc" id="sec-8">
+      <summary><span class="acc-num">VIII</span><span class="acc-title">The Witness in the Heart</span></summary>
+      <div class="acc-body">
+        <p>We return, finally, to the faculty with which we began. The Qur&#700;&#257;n asserts that the human being is created upon a particular disposition &mdash; <em>fi&#7789;ra</em> &mdash; which inclines, when undistorted, toward the recognition of God.</p>
+
+        <div class="scripture">
+          <p class="ayah" lang="ar" dir="rtl">&#1601;&#1614;&#1571;&#1614;&#1602;&#1616;&#1605;&#1618; &#1608;&#1614;&#1580;&#1618;&#1607;&#1614;&#1603;&#1614; &#1604;&#1616;&#1604;&#1583;&#1617;&#1616;&#1610;&#1606;&#1616; &#1581;&#1614;&#1606;&#1616;&#1610;&#1601;&#1611;&#1575; &#1601;&#1616;&#1591;&#1618;&#1585;&#1614;&#1578;&#1614; &#1575;&#1604;&#1604;&#1617;&#1614;&#1607;&#1616; &#1575;&#1604;&#1617;&#1614;&#1578;&#1616;&#1610; &#1601;&#1614;&#1591;&#1614;&#1585;&#1614; &#1575;&#1604;&#1606;&#1617;&#1614;&#1575;&#1587;&#1614; &#1593;&#1614;&#1604;&#1614;&#1610;&#1618;&#1607;&#1614;&#1575; &#1604;&#1614;&#1575; &#1578;&#1614;&#1576;&#1618;&#1583;&#1616;&#1610;&#1604;&#1614; &#1604;&#1616;&#1582;&#1614;&#1604;&#1618;&#1602;&#1616; &#1575;&#1604;&#1604;&#1617;&#1614;&#1607;&#1616; &#1584;&#1614;&#1648;&#1604;&#1616;&#1603;&#1614; &#1575;&#1604;&#1583;&#1617;&#1616;&#1610;&#1606;&#1615; &#1575;&#1604;&#1618;&#1602;&#1614;&#1610;&#1617;&#1616;&#1605;&#1615; &#1608;&#1614;&#1604;&#1614;&#1648;&#1603;&#1616;&#1606;&#1617;&#1614; &#1571;&#1614;&#1603;&#1618;&#1579;&#1614;&#1585;&#1614; &#1575;&#1604;&#1606;&#1617;&#1614;&#1575;&#1587;&#1616; &#1604;&#1614;&#1575; &#1610;&#1614;&#1593;&#1618;&#1604;&#1614;&#1605;&#1615;&#1608;&#1606;&#1614; &#64831;&#1635;&#1632;&#64830;</p>
+          <p class="translation">&ldquo;So set your face to the religion, inclining to truth &mdash; the natural disposition of God upon which He has created mankind. There is no altering the creation of God. That is the upright religion, but most people do not know.&rdquo;</p>
+          <p class="ref">Qur&#700;&#257;n &middot; S&#363;rat al-R&#363;m &middot; 30:30</p>
+        </div>
+
+        <p>A <em>&#7717;ad&#299;th</em> in the <em>&#7778;a&#7717;&#299;&#7717;ayn</em> &mdash; meaning agreed upon by both al-Bukh&#257;r&#299; (no. 1359) and Muslim (no. 2658), the very highest grade of authenticity &mdash; records the Prophet <span class="salla" lang="ar">&#65018;</span> as saying: <em>kullu mawl&#363;din y&#363;ladu &#703;al&#257; &rsquo;l-fi&#7789;ra</em>, &ldquo;every child is born upon the fi&#7789;ra.&rdquo; The natural orientation is one of openness to the truth that there is a Maker; the distortions are the work of culture, upbringing, suffering, and intellectual fashion. To remove the distortions is not to acquire something foreign but to recover something native.</p>
+        <p>This is why, in the Islamic account, the act of belief is described not as a leap into the unknown but as a return. The Arabic <em>tawba</em>, the word usually translated as &ldquo;repentance,&rdquo; means literally &ldquo;to turn back.&rdquo; It is also why the call to belief is, finally, a call to honesty. Not honesty against reason, but honesty in the use of reason. The God of classical Islam is not the God who demands that one suspend the critical faculty in His favour. He is the God who, by giving that faculty in the first place, asks only that it be used to its proper end. <em>Afal&#257; ta&#703;qil&#363;n?</em> &mdash; do you not reason? &mdash; is not a rhetorical taunt. It is the central question of the Qur&#700;&#257;n addressed to every reader, in every age, in every condition of prior belief or unbelief.</p>
+        <p>It is striking that the Qur&#700;&#257;n, when describing the regret of those who arrive at the final accounting without having taken the question seriously, puts the regret in precisely these terms. Of the dwellers of the Fire it reports:</p>
+
+        <div class="scripture">
+          <p class="ayah" lang="ar" dir="rtl">&#1608;&#1614;&#1602;&#1614;&#1575;&#1604;&#1615;&#1608;&#1575; &#1604;&#1614;&#1608;&#1618; &#1603;&#1615;&#1606;&#1617;&#1614;&#1575; &#1606;&#1614;&#1587;&#1618;&#1605;&#1614;&#1593;&#1615; &#1571;&#1614;&#1608;&#1618; &#1606;&#1614;&#1593;&#1618;&#1602;&#1616;&#1604;&#1615; &#1605;&#1614;&#1575; &#1603;&#1615;&#1606;&#1617;&#1614;&#1575; &#1601;&#1616;&#1610; &#1571;&#1614;&#1589;&#1618;&#1581;&#1614;&#1575;&#1576;&#1616; &#1575;&#1604;&#1587;&#1617;&#1614;&#1593;&#1616;&#1610;&#1585;&#1616; &#64831;&#1633;&#1632;&#64830;</p>
+          <p class="translation">&ldquo;And they will say: Had we but listened, or used our reason, we would not have been among the inhabitants of the Blaze.&rdquo;</p>
+          <p class="ref">Qur&#700;&#257;n &middot; S&#363;rat al-Mulk &middot; 67:10</p>
+        </div>
+
+        <p>The regret here is not that they were intellectually mistaken. It is that they did not bring the faculty to bear. They did not listen; they did not reason. The Qur&#700;&#257;n, in other words, treats the unexamined dismissal of God as the central error from which all other errors descend &mdash; not because dismissal is necessarily wrong, but because dismissal without the work is a failure of seriousness about a question that any honest person must, at some point, take seriously.</p>
+
+        <p class="pullquote">The God of classical Islam is not the God who demands that one suspend the critical faculty in His favour. He is the God who, by giving that faculty in the first place, asks only that it be used to its proper end.</p>
+      </div>
+    </details>
+
+    <!-- IX -->
+    <details class="acc" id="sec-9">
+      <summary><span class="acc-num">IX</span><span class="acc-title">A Final Word</span></summary>
+      <div class="acc-body">
+        <p>To the young man, then, who at eighteen could not bear the idea of a cruel God: he was right. He was right in the same way that the patriarch Abraham was right when he refused his father&rsquo;s idols; right in the same way that the Qur&#700;&#257;n is right when it tells him that creation was not made in vain. His instinct that something was wrong with the picture was true. The error, if there was one, lay only in supposing that the picture he had been shown exhausted the possibilities.</p>
+        <p>There is another way of describing the universe, supported by argument, taught by a tradition that has thought about these questions for fourteen centuries, and held in some form by something like a quarter of the people now alive. It says that the world is real, that it was made for a reason, that the One who made it is merciful before He is anything else, that no soul is condemned for the deed of another, that suffering is grave but not pointless, and that there will come a day on which every tear shed in injustice will be returned with interest of a kind we cannot yet imagine.</p>
+        <p>It is not a picture one need accept by force, and the tradition itself would not want it so. There is no compulsion in religion, the Qur&#700;&#257;n insists (Q 2:256), and the classical commentators take that injunction to mean what it says. But it is a picture one might be willing &mdash; at eighteen, or at forty-eight, or at any age in which the question still matters &mdash; to examine with the same honest care that one once gave to the rejection. The Qur&#700;&#257;n asks no more than that. And the asking, in the end, is the whole of its case: a Book that does not insist on being believed, but does insist on being read; a God who does not demand that one bow before Him in fear, but invites one to consider, calmly and at length, whether the world He claims to have made is in fact the world we find ourselves living in.</p>
+        <p>The classical tradition is patient with the questioner. It has had to be. Fourteen centuries of careful theological reflection, of arguments worked out and counter-arguments tested, of saints who held the faith under torture and philosophers who held it against the philosophers of other schools, have left the Sunn&#299; tradition with no nervousness about hard questions and no impatience with those who ask them. The answer it offers is the answer of mature mind and quiet confidence: that the universe is intelligible because it was meant to be; that suffering is real but bounded; that mercy is the first word and the last; that the human being is honoured by being given the freedom to refuse, and dignified by the invitation to consider; and that the One who asks for this consideration is the one Reality whose existence is presupposed even by the act of denying Him.</p>
+        <p>The answer, on careful looking, is harder to dismiss than the eighteen-year-old supposed. That is why so many, having begun by refusing the cruel God they were shown, ended by finding the merciful God they had not been told about. There is no shame in having rejected the first picture. There may, however, be unfinished business in not yet having looked at the second.</p>
+      </div>
+    </details>
+
+    <!-- Aide-Memoire -->
+    <details class="acc block-takeaways" id="sec-takeaways">
+      <summary><span class="acc-num">&#10038;</span><span class="acc-title">Aide-M&eacute;moire &middot; Key Takeaways</span></summary>
+      <div class="acc-body">
+        <p class="tk-intro">The argument of the preceding essay, distilled to its twelve principal claims, for the reader who wishes a summary to return to.</p>
+        <ol>
+          <li><span class="tk-claim">The God being rejected is rarely the God of classical Islam.</span> Most objections to belief are objections to a particular picture of God &mdash; arbitrary, anthropomorphic, punitive &mdash; that the orthodox Sunn&#299; tradition itself rejects on theological grounds.</li>
+          <li><span class="tk-claim">The Qur&#700;&#257;n grounds belief in reason, not in blind submission.</span> The refrains <em>afal&#257; ta&#703;qil&#363;n</em> (&ldquo;do you not reason?&rdquo;), <em>afal&#257; tatafakkar&#363;n</em> (&ldquo;do you not reflect?&rdquo;), and <em>afal&#257; yatadabbar&#363;n</em> (&ldquo;do they not contemplate?&rdquo;) run as a litany through the text.</li>
+          <li><span class="tk-claim">Belief, in the Islamic account, is reached through reflection.</span> The Qur&#700;&#257;n presents contemplation of the natural order &mdash; camels, sky, mountains, earth (Q 88:17&ndash;20) &mdash; as the route by which faith is arrived at, not as its pious supplement.</li>
+          <li><span class="tk-claim">Abraham&rsquo;s reasoning is the Qur&#700;&#257;nic paradigm.</span> In S&#363;rat al-An&#703;&#257;m (6:75&ndash;79), the patriarch reasons from the transience of stars, moon and sun to the conclusion that none can be the ultimate Reality. He is not given the conclusion; he arrives at it.</li>
+          <li><span class="tk-claim">The cosmological argument runs from contingency to necessity.</span> Contingent things require a cause beyond themselves; a chain of contingent causes cannot regress infinitely; a Necessary Being &mdash; uncaused, self-subsistent &mdash; must therefore exist. This is Ibn S&#299;n&#257;&rsquo;s <em>burh&#257;n al-&#7779;idd&#299;q&#299;n</em>.</li>
+          <li><span class="tk-claim">God in classical theology is beyond anthropomorphic categories.</span> <em>Laysa ka-mithlihi shay&#702;</em> &mdash; &ldquo;there is nothing like unto Him&rdquo; (Q 42:11) &mdash; regulates all subsequent God-talk. He knows, but not as we know; wills, but not as we will.</li>
+          <li><span class="tk-claim">There is no original sin in Islam.</span> Every soul is created on the <em>fi&#7789;ra</em> &mdash; a pure original disposition. No infant inherits guilt; no bearer of burdens bears the burden of another (Q 35:18). Forgiveness is direct, without intermediary, ransom, or blood.</li>
+          <li><span class="tk-claim">Mercy is the primary divine attribute.</span> The Qur&#700;&#257;n opens 113 of its 114 chapters with <em>al-Ra&#7717;m&#257;n al-Ra&#7717;&#299;m</em>. The <em>&#7717;ad&#299;th quds&#299;</em> &ldquo;<em>inna ra&#7717;mat&#299; sabaqat gha&#7693;ab&#299;</em>&rdquo; &mdash; &ldquo;My mercy precedes My wrath&rdquo; (Bukh&#257;r&#299; 7404; Muslim 2751) &mdash; states the ontological priority of mercy over wrath.</li>
+          <li><span class="tk-claim">Suffering is trial (<em>bal&#257;&#702;</em>), not punishment for ancestral sin.</span> The world is <em>d&#257;r al-imti&#7717;&#257;n</em>, the abode of testing, not the abode of final reward. The most severely tested are those closest to God (Tirmidh&#299; 2398, <em>&#7717;asan &#7779;a&#7717;&#299;&#7717;</em>).</li>
+          <li><span class="tk-claim">The hereafter completes the moral accounting.</span> If creation is purposeful, it must come to a reckoning; otherwise the purpose is unfulfilled. No soul will be wronged by the weight of an atom (Q 4:40; 99:7&ndash;8). Every kindness will be honoured; every injustice answered.</li>
+          <li><span class="tk-claim">The <em>fi&#7789;ra</em> makes belief a return, not a leap.</span> Humans are created with a native orientation toward the recognition of God (Q 30:30; Bukh&#257;r&#299; 1359; Muslim 2658). <em>Tawba</em> &mdash; the word usually translated as &ldquo;repentance&rdquo; &mdash; means literally &ldquo;to turn back.&rdquo;</li>
+          <li><span class="tk-claim">There is no compulsion in religion (Q 2:256).</span> The classical commentators take the injunction to mean what it says. The case Islam advances rests on honest consideration, not on assent under duress. <em>Afal&#257; ta&#703;qil&#363;n?</em></li>
+        </ol>
+      </div>
+    </details>
+
+    <!-- References -->
+    <details class="acc block-sources" id="sec-references">
+      <summary><span class="acc-num">&#167;</span><span class="acc-title">References &amp; Notes</span></summary>
+      <div class="acc-body">
+        <p>Qur&#700;&#257;nic citations follow the &#7716;af&#7779; recension in the standard Madinan mu&#7779;&#7717;af. Verse numbering is the King Fahd Complex edition. Translations are the author&rsquo;s, consulted against M.A.S. Abdel Haleem (Oxford, 2004) and the Sahih International rendering. Principal verses cited: &#256;l &#703;Imr&#257;n 3:190&ndash;191; al-Baqara 2:256; al-Nis&#257;&#702; 4:40; al-An&#703;&#257;m 6:75&ndash;79 and 6:164; al-&#7716;ijr 15:49; F&#257;&#7789;ir 35:18; &#7778;&#257;d 38:27; Sh&#363;r&#257; 42:11; al-Mu&#702;min&#363;n 23:115; al-R&#363;m 30:30; al-Mulk 67:2 and 67:10; al-Gh&#257;shiya 88:17&ndash;20; al-Zalzala 99:7&ndash;8.</p>
+        <p>&#7716;ad&#299;th citations are referenced to the canonical Sunn&#299; collections. The &#7717;ad&#299;th quds&#299; &ldquo;My mercy precedes My wrath&rdquo; is recorded in &#7778;a&#7717;&#299;&#7717; al-Bukh&#257;r&#299;, Kit&#257;b al-Taw&#7717;&#299;d (no. 7404), and &#7778;a&#7717;&#299;&#7717; Muslim, Kit&#257;b al-Tawba (no. 2751); both reports are &#7779;a&#7717;&#299;&#7717;. The fi&#7789;ra &#7717;ad&#299;th (no. 1359 in al-Bukh&#257;r&#299;; no. 2658 in Muslim) is agreed upon by the two &#7778;a&#7717;&#299;&#7717;s and is therefore of the highest grade. The &ldquo;wonderful is the affair of the believer&rdquo; tradition is &#7778;a&#7717;&#299;&#7717; Muslim no. 2999. The report on trials of the prophets (Tirmidh&#299; no. 2398; Ibn M&#257;jah no. 4023; A&#7717;mad in his Musnad) is graded &#7717;asan &#7779;a&#7717;&#299;&#7717; by al-Tirmidh&#299;.</p>
+        <p>Classical sources alluded to: al-Ghaz&#257;l&#299;, al-Iqti&#7779;&#257;d f&#299; &rsquo;l-I&#703;tiq&#257;d and I&#7717;y&#257;&#702; &#703;Ul&#363;m al-D&#299;n; al-M&#257;tur&#299;d&#299;, Kit&#257;b al-Taw&#7717;&#299;d; al-Ash&#703;ar&#299;, al-Ib&#257;na &#703;an U&#7779;&#363;l al-Diy&#257;na; Fakhr al-D&#299;n al-R&#257;z&#299;, al-Mu&#7717;a&#7779;&#7779;al; Ibn S&#299;n&#257;, al-Ish&#257;r&#257;t wa &rsquo;l-Tanb&#299;h&#257;t, nama&#7789; IV (the burh&#257;n al-&#7779;idd&#299;q&#299;n).</p>
+        <p>The Ivan Karamazov reference is to F.M. Dostoevsky, <em>The Brothers Karamazov</em>, Part II, Book V, chapters 4 (&ldquo;Rebellion&rdquo;) and 5 (&ldquo;The Grand Inquisitor&rdquo;). Shaykh Hamza Yusuf&rsquo;s sympathetic engagement with the same argument is in his essay &ldquo;When Children Suffer&rdquo; (Sandala, 2014).</p>
+        <p>Honorifics. <span class="salla" lang="ar">&#65018;</span> (<em>&#7779;all&#257; All&#257;hu &#703;alayhi wa-sallam</em>, &ldquo;may God&rsquo;s peace and blessings be upon him&rdquo;) follows every mention of the Prophet Mu&#7717;ammad. Standard transliteration conventions are followed for classical Arabic; modernised forms are used where the term has entered current English usage.</p>
+      </div>
+    </details>
+
+  </main>
+
+  <div class="backlink-foot">
+    <a class="backlink" href="../"><span class="arrow">&larr;</span> The Bilal Papers</a>
+  </div>
+
+  <footer class="colophon">
+    <span class="orn">&#10038;</span>
+    <a href="../">The Bilal Papers</a> &middot; The Quarterly Review &middot; Issue 02<br>
+    Set in Amiri
+  </footer>
+
+</body>
+</html>
